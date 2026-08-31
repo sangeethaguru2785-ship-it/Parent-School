@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an Account – Parent–School Communication Portal</title>
+  <meta name="description" content="Create an account to connect with your child's school and track attendance, grades, assignments, events and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Kumbh+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/cropped-favicon-32x32.webp">
+</head>
+<body class="auth-body" data-page="signup">
+
+  <main class="auth-page">
+    <div class="auth-wrap">
+
+      <!-- ===== Side panel ===== -->
+      <aside class="auth-aside">
+        <a class="auth-brand" href="index.html" aria-label="Stackly – back to home"><img src="img/logo.webp" alt="Stackly"></a>
+        <div class="auth-aside-inner">
+          <span class="auth-eyebrow">Parent–School Communication Portal</span>
+          <h2>Join the family–school connection</h2>
+          <p class="auth-lead">Create your account and start tracking progress, sharing updates and staying close to your child's school day.</p>
+          <ul class="auth-benefits">
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></i><span><b>Set up in minutes</b><small>Quick &amp; effortless onboarding</small></span></li>
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i><span><b>Role-based access</b><small>Secure for parents &amp; teachers</small></span></li>
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i><span><b>Friendly support</b><small>We answer within 24 hours</small></span></li>
+          </ul>
+          <p class="auth-tagline">"Together, we help students thrive — every step of the way."</p>
+        </div>
+      </aside>
+
+      <!-- ===== Form ===== -->
+      <div class="auth-form">
+        <a class="auth-form-brand auth-form-brand-large" href="index.html" aria-label="Stackly – back to home"><img src="img/logo.webp" alt="Stackly"></a>
+        <h1>Create your account</h1>
+        <p>Fill in your details below to get started.</p>
+
+        <div class="form-error" id="signupFormError" role="alert">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Please fix the highlighted fields before continuing.</span>
+        </div>
+
+        <form id="signupForm" novalidate>
+
+          <div class="form-field role-field">
+            <span class="role-label">I am creating an account as a</span>
+            <div class="role-grid" role="radiogroup" aria-label="Account role">
+              <label class="role-card" for="signupRoleParent">
+                <input type="radio" name="role" id="signupRoleParent" value="parent">
+                <span class="role-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="role-ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <b>Parent</b>
+                <small>Track your child's learning</small>
+              </label>
+              <label class="role-card" for="signupRoleTeacher">
+                <input type="radio" name="role" id="signupRoleTeacher" value="teacher">
+                <span class="role-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="role-ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+                <b>Teacher</b>
+                <small>Manage your classroom</small>
+              </label>
+            </div>
+            <div class="field-error" data-error-for="role">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Please select a role to continue.</span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="fname">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="fname" placeholder="e.g. Jane Smith" autocomplete="name">
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="email">
+            <label for="signup-email">Email address</label>
+            <input type="email" id="signup-email" name="email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="phone">
+            <label for="signup-phone">Phone number</label>
+            <input type="tel" id="signup-phone" name="phone" placeholder="+1 555 000 0000" autocomplete="tel">
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="password">
+            <label for="signup-password">Password</label>
+            <div class="pass-wrap">
+              <input type="password" id="signup-password" name="password" placeholder="Create a password (min 8 characters)" autocomplete="new-password">
+              <button type="button" class="pass-toggle" aria-label="Show password">
+                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="confirm">
+            <label for="signup-confirm">Confirm password</label>
+            <div class="pass-wrap">
+              <input type="password" id="signup-confirm" name="confirm" placeholder="Re-enter your password" autocomplete="new-password">
+              <button type="button" class="pass-toggle" aria-label="Show password">
+                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <label class="auth-agree">
+            <input type="checkbox" id="agree" name="agree" required>
+            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+          </label>
+          <div class="field-error agree-error" id="agreeError">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Please accept the Terms of Service to continue.</span>
+          </div>
+
+          <button type="submit" class="btn accent"><span>Create Account</span><span class="btn-spinner"></span></button>
+        </form>
+
+        <div class="login-success" style="display:none;">
+          <div class="tick">
+            <svg class="icon" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Account created!</h3>
+          <p>Welcome aboard! Redirecting to your dashboard…</p>
+        </div>
+
+        <div class="login-or">or sign up with</div>
+        <div class="social-login">
+          <a href="#" aria-label="Google">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v5.2h5.28c-.66 3.44-3.86 4.8-6.82 4.8-4.15 0-7.5-3.36-7.5-7.5s3.35-7.5 7.5-7.5c1.85 0 3.5.67 4.78 1.76l3.6-3.6C16.77 2.04 14.4 1 11.96 1 5.92 1 1 5.92 1 12s4.92 11 10.96 11c6.02 0 10.99-4.47 10.99-11 0-.63-.06-1.25-.16-1.85z"/></svg>
+          </a>
+          <a href="#" aria-label="Microsoft">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h9.5v9.5H2V2zm10.5 0H22v9.5h-9.5V2zM2 12.5h9.5V22H2v-9.5zm10.5 0H22V22h-9.5v-9.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Apple">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          </a>
+        </div>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+
+        <a class="auth-home" href="index.html" aria-label="Go to Home page"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg> Go to Home</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      /* ---------- Show / hide password ---------- */
+      document.querySelectorAll('.pass-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var input = btn.closest('.pass-wrap').querySelector('input');
+          var show = input.type === 'password';
+          input.type = show ? 'text' : 'password';
+          btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        });
+      });
+
+      /* ---------- Role selection cards ---------- */
+      var roleCards = document.querySelectorAll('.role-card');
+      roleCards.forEach(function (card) {
+        var radio = card.querySelector('input[type="radio"]');
+        card.addEventListener('click', function () {
+          radio.checked = true;
+          refreshRoles();
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            radio.checked = true;
+            refreshRoles();
+          }
+        });
+      });
+      function refreshRoles() {
+        roleCards.forEach(function (c) {
+          c.classList.toggle('selected', c.querySelector('input').checked);
+        });
+      }
+
+      /* ---------- Validation ---------- */
+      var form = document.getElementById('signupForm');
+      var formError = document.getElementById('signupFormError');
+      var agreeBox = document.getElementById('agree');
+      var agreeError = document.getElementById('agreeError');
+
+      function setInvalid(field, msg) {
+        field.classList.add('invalid');
+        if (msg) {
+          var m = field.querySelector('[data-msg]');
+          if (m) m.textContent = msg;
+        }
+      }
+      function setValid(field) {
+        field.classList.remove('invalid');
+      }
+
+      var fieldMap = {
+        fname: document.querySelector('[data-field="fname"]'),
+        email: document.querySelector('[data-field="email"]'),
+        phone: document.querySelector('[data-field="phone"]'),
+        password: document.querySelector('[data-field="password"]'),
+        confirm: document.querySelector('[data-field="confirm"]')
+      };
+      var roleField = document.querySelector('.role-field');
+
+      function validateEmail(value) {
+        value = value.trim();
+        if (!value || !/^[a-zA-Z0-9@.]+$/.test(value)) return false;
+        var at = value.indexOf('@');
+        if (at < 1 || at === value.length - 1) return false;
+        if (value.indexOf('@', at + 1) !== -1) return false;
+        if (value.indexOf('.', at + 1) < 0) return false;
+        return value.slice(value.lastIndexOf('.') + 1).length >= 2;
+      }
+      function validatePhone(value) {
+        return value.trim() === '' || /^[+\d][\d\s().-]{6,}$/.test(value.trim());
+      }
+
+      function clearErrors() {
+        formError.classList.remove('show');
+        agreeError.style.display = 'none';
+        document.querySelectorAll('.form-field.invalid').forEach(setValid);
+        document.querySelector('.auth-page').classList.remove('shake');
+      }
+
+      function validate() {
+        var firstInvalid = null;
+        var roleChecked = roleField.querySelector('input[type="radio"]:checked');
+        var fname = fieldMap.fname.querySelector('input');
+        var email = fieldMap.email.querySelector('input');
+        var phone = fieldMap.phone.querySelector('input');
+        var pass = fieldMap.password.querySelector('input');
+        var confirm = fieldMap.confirm.querySelector('input');
+
+        if (!roleChecked) {
+          setInvalid(roleField);
+          firstInvalid = firstInvalid || roleField;
+        } else setValid(roleField);
+
+        if (!fname.value.trim()) {
+          setInvalid(fieldMap.fname, 'Full name is required.');
+          firstInvalid = firstInvalid || fieldMap.fname;
+        } else if (fname.value.trim().length < 2) {
+          setInvalid(fieldMap.fname, 'Please enter your full name.');
+          firstInvalid = firstInvalid || fieldMap.fname;
+        } else setValid(fieldMap.fname);
+
+        if (!email.value.trim()) {
+          setInvalid(fieldMap.email, 'Email address is required.');
+          firstInvalid = firstInvalid || fieldMap.email;
+        } else if (!validateEmail(email.value)) {
+          setInvalid(fieldMap.email, 'Please enter a valid email address. Only letters, numbers, "@" and "." are allowed.');
+          firstInvalid = firstInvalid || fieldMap.email;
+        } else setValid(fieldMap.email);
+
+        if (!validatePhone(phone.value)) {
+          setInvalid(fieldMap.phone, 'Please enter a valid phone number.');
+          firstInvalid = firstInvalid || fieldMap.phone;
+        } else setValid(fieldMap.phone);
+
+        if (!pass.value) {
+          setInvalid(fieldMap.password, 'Password is required.');
+          firstInvalid = firstInvalid || fieldMap.password;
+        } else if (pass.value.length < 8) {
+          setInvalid(fieldMap.password, 'Password must be at least 8 characters.');
+          firstInvalid = firstInvalid || fieldMap.password;
+        } else if (!/[A-Za-z]/.test(pass.value) || !/\d/.test(pass.value)) {
+          setInvalid(fieldMap.password, 'Use at least one letter and one number.');
+          firstInvalid = firstInvalid || fieldMap.password;
+        } else setValid(fieldMap.password);
+
+        if (!confirm.value) {
+          setInvalid(fieldMap.confirm, 'Please confirm your password.');
+          firstInvalid = firstInvalid || fieldMap.confirm;
+        } else if (confirm.value !== pass.value) {
+          setInvalid(fieldMap.confirm, 'Passwords do not match.');
+          firstInvalid = firstInvalid || fieldMap.confirm;
+        } else setValid(fieldMap.confirm);
+
+        if (!agreeBox.checked) {
+          agreeError.style.display = 'flex';
+          firstInvalid = firstInvalid || agreeBox;
+        } else agreeError.style.display = 'none';
+
+        return { valid: !firstInvalid, first: firstInvalid };
+      }
+
+      Object.keys(fieldMap).forEach(function (k) {
+        fieldMap[k].querySelector('input').addEventListener('input', function () {
+          var f = fieldMap[k];
+          if (k === 'email') {
+            if (!this.value.trim()) {
+              setValid(f);
+            } else if (!validateEmail(this.value)) {
+              setInvalid(f, 'Only letters, numbers, "@" and "." are allowed in an email address.');
+            } else {
+              setValid(f);
+            }
+          } else if (f.classList.contains('invalid')) {
+            setValid(f);
+          }
+          formError.classList.remove('show');
+        });
+      });
+      roleField.querySelectorAll('input').forEach(function (r) {
+        r.addEventListener('change', function () { setValid(roleField); formError.classList.remove('show'); });
+      });
+      agreeBox.addEventListener('change', function () { if (agreeBox.checked) agreeError.style.display = 'none'; });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+        var res = validate();
+        if (!res.valid) {
+          formError.classList.add('show');
+          document.querySelector('.auth-page').classList.add('shake');
+          setTimeout(function () { document.querySelector('.auth-page').classList.remove('shake'); }, 550);
+          var el = res.first;
+          if (el && el.focus) el.focus();
+          return;
+        }
+        var btn = form.querySelector('button[type="submit"]');
+        btn.classList.add('is-loading');
+        setTimeout(function () {
+          var role = roleField.querySelector('input:checked').value;
+          var email = fieldMap.email.querySelector('input').value.trim();
+          var session = {
+            role: role,
+            email: email,
+            loggedInAt: new Date().toISOString()
+          };
+          try { localStorage.setItem('portal_user', JSON.stringify(session)); } catch (err) {}
+          form.style.display = 'none';
+          var success = document.querySelector('.login-success');
+          if (success) success.style.display = 'block';
+          var target = role === 'teacher' ? 'teacher-dashboard.html' : 'parent-dashboard.html';
+          setTimeout(function () { window.location.href = target; }, 1600);
+        }, 800);
+      });
+    })();
+  </script>
+</body>
+</html>

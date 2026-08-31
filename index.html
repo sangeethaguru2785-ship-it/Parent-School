@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent–School Communication Portal – Connecting Families &amp; Schools</title>
+  <meta name="description" content="A modern Parent–School Communication Portal that connects parents, teachers and schools with real-time updates on attendance, grades, assignments, events and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Kumbh+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/cropped-favicon-32x32.webp">
+</head>
+<body data-page="home">
+
+  <!-- ============ 1. HEADER ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="login.html" class="header-login" aria-label="Login"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg><span class="t">Login</span></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" data-page="home" class="active">Home</a></li>
+          <li><a href="about.html" data-page="about">About</a></li>
+          <li><a href="features.html" data-page="features">Features</a></li>
+          <li><a href="services.html" data-page="services">Services</a></li>
+          <li><a href="academic.html" data-page="academic">Academic Performance</a></li>
+          <li><a href="events.html" data-page="events">Events</a></li>
+          <li><a href="contact.html" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="brand" href="index.html">
+        <img class="white" src="img/logo.webp" alt="Parent–School Portal">
+        <img class="dark" src="img/logo.webp" alt="Parent–School Portal">
+      </a>
+      <button class="nav-toggle" aria-label="Open menu"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </header>
+
+  <!-- ============ 2. HERO ============ -->
+  <section class="hero">
+    <video class="hero-video" id="heroVideo1" src="school1.mp4" autoplay muted playsinline preload="auto"></video>
+    <video class="hero-video" id="heroVideo2" src="school2.mp4" autoplay muted playsinline preload="auto"></video>
+    <svg class="shape s1" viewBox="0 0 100 100" fill="#FFB606"><circle cx="50" cy="50" r="50"/></svg>
+    <svg class="shape s2" viewBox="0 0 100 100" fill="#FFB606"><path d="M50 0 100 100 0 100z"/></svg>
+    <svg class="shape s3" viewBox="0 0 100 100" fill="#fff" opacity=".6"><circle cx="50" cy="50" r="50"/></svg>
+    <div class="container">
+      <span class="hero-tag"><i>★</i>&nbsp;Empowering Better School Connections</span>
+      <h1>Together, We Help Students <em>Thrive</em></h1>
+      <p>A smarter way for parents and teachers to stay connected, share updates, track progress, and support every step of a child's learning journey — all from one secure platform.</p>
+      <div class="hero-cta">
+        <a href="features.html" class="btn accent"><span>Discover More</span></a>
+        <a href="login.html" class="btn outline"><span>Access Portal</span></a>
+      </div>
+      <div class="hero-meta">
+        <div class="hm-item">
+          <span class="ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+          <div><b>Real-Time Updates</b><small>Attendance &amp; grades live</small></div>
+        </div>
+        <div class="hm-item">
+          <span class="ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 20 10 12 4 18 1 12"/><polyline points="22 6 16 12 12 8 8 14"/><polyline points="6 2 2 6 6 10"/></svg></span>
+          <div><b>Student Progress</b><small>Track growth term by term</small></div>
+        </div>
+        <div class="hm-item">
+          <span class="ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <div><b>Easy Communication</b><small>Message teachers instantly</small></div>
+        </div>
+      </div>
+    </div>
+    <a href="#stats" class="scroll-down" aria-label="Scroll down">
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ 3. STATS ============ -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="sep"></div>
+          <span class="num"><span class="n" data-count="80500">0</span><span class="plus">+</span></span>
+          <div class="label">Connected Families</div>
+        </div>
+        <div class="stat-item reveal d1">
+          <div class="sep"></div>
+          <span class="num"><span class="n" data-count="12">0</span></span>
+          <div class="label">Years Serving</div>
+        </div>
+        <div class="stat-item reveal d2">
+          <div class="sep"></div>
+          <span class="num"><span class="n" data-count="48">0</span></span>
+          <div class="label">Partner Schools</div>
+        </div>
+        <div class="stat-item reveal d3">
+          <div class="sep"></div>
+          <span class="num"><span class="n" data-count="24">0</span></span>
+          <div class="label">Classrooms Online</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. FEATURES SNAPSHOT ============ -->
+  <section class="features">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">Portal Highlights</span>
+        <h2>Communication Made Simple</h2>
+        <p>Stay close to your child's school day with clear, timely updates parents can trust.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <span class="fnum">01</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h4>Parent–Teacher Chat</h4>
+          <p>Message teachers directly and get answers without the back-and-forth.</p>
+        </div>
+        <div class="feature-card reveal d1">
+          <span class="fnum">02</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <h4>Attendance Alerts</h4>
+          <p>See exactly when your child arrives, leaves and is present at school.</p>
+        </div>
+        <div class="feature-card reveal d2">
+          <span class="fnum">03</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>
+          <h4>Grades &amp; Results</h4>
+          <p>Access marks, subject-wise performance and report cards instantly.</p>
+        </div>
+        <div class="feature-card reveal d3">
+          <span class="fnum">04</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h4>Instant Notices</h4>
+          <p>Never miss an announcement, event or important school update.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. ABOUT ============ -->
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-media reveal reveal-left">
+          <div class="img-main">
+            <img src="img/image-26-copyright.webp" alt="Parents and teachers communicating">
+          </div>
+          <div class="img-float">
+            <img src="img/image-25-copyright.webp" alt="Parent reviewing progress">
+          </div>
+          <div class="badge"><b>98%</b><small>Happy Parents</small></div>
+        </div>
+        <div class="about-content reveal reveal-right">
+          <span class="sec-sub">About Our Portal</span>
+          <h2>Peace of Mind for Every Parent</h2>
+          <p>From daily attendance to detailed progress reports, our portal keeps families confidently in the loop throughout the entire school year.</p>
+          <ul class="about-points">
+            <li><span class="tick"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Direct teacher messaging</li>
+            <li><span class="tick"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Live attendance tracking</li>
+            <li><span class="tick"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Transparent progress reports</li>
+            <li><span class="tick"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Secure &amp; caring community</li>
+          </ul>
+          <div class="about-cta">
+            <a href="about.html" class="btn"><span>Discover More</span>
+              <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <div class="quote">
+              <img src="img/image-90-copyright-120x120.webp" alt="Principal">
+              <div><b>Mary Stivens</b><small>Principal, Stackly School</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- marquee band -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Parent–Teacher Chat <i>★</i></span><span>Attendance Tracking <i>★</i></span><span>Academic Results <i>★</i></span><span>Assignments <i>★</i></span><span>Event Alerts <i>★</i></span>
+      <span>Parent–Teacher Chat <i>★</i></span><span>Attendance Tracking <i>★</i></span><span>Academic Results <i>★</i></span><span>Assignments <i>★</i></span><span>Event Alerts <i>★</i></span>
+    </div>
+  </div>
+
+  <!-- ============ 6. HOW IT WORKS ============ -->
+  <section class="program">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">How It Works</span>
+        <h2>Three Simple Steps</h2>
+        <p>Getting your family connected takes just a minute.</p>
+      </div>
+      <div class="program-grid">
+        <article class="program-card reveal">
+          <div class="img-wrap">
+            <img src="img/image-24-copyright.webp" alt="Create your account">
+            <span class="price">Step 01</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Create Your Account</h4>
+            <p>Parents and staff sign in with a secure, role-based account linked to their school.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;Takes 2 min</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i>&nbsp;Parents &amp; Staff</span></div>
+          </div>
+        </article>
+        <article class="program-card reveal d1">
+          <div class="img-wrap">
+            <img src="img/image-17-copyright.webp" alt="Stay connected daily">
+            <span class="price">Step 02</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Stay Connected Daily</h4>
+            <p>Receive attendance, assignments and announcements in real time as they happen.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;In real time</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i>&nbsp;Always in sync</span></div>
+          </div>
+        </article>
+        <article class="program-card reveal d2">
+          <div class="img-wrap">
+            <img src="img/image-18-copyright.webp" alt="Track and collaborate">
+            <span class="price">Step 03</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Track &amp; Collaborate</h4>
+            <p>Follow progress reports and message teachers whenever you need a conversation.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;All term</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i>&nbsp;Progress reports</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. TESTIMONIALS ============ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials-grid">
+        <div class="reveal reveal-left">
+          <div class="sec-head" style="text-align:left;margin:0 0 32px;">
+            <span class="sec-sub" style="text-align:left;">Testimonials</span>
+            <h2>What Our Parents Say</h2>
+          </div>
+          <div class="tst-slider" data-slider>
+            <div class="tst-track">
+              <div class="tst-slide">
+                <div class="tst-card">
+                  <div class="quote-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M10 7H6a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1H7v2h2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4zm10 0h-4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1h-3v2h2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4z"/></svg></div>
+                  <p>The portal changed how we stay involved. Attendance, grades and teacher messages are all right there — no more chasing calls or notes.</p>
+                  <div class="stars">★★★★★</div>
+                  <div class="tst-user">
+                    <img src="img/image-90-copyright-120x120.webp" alt="Mary Stivens">
+                    <div><b>Mary Stivens</b><small>Parent, Grade 4</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tst-slide">
+                <div class="tst-card">
+                  <div class="quote-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M10 7H6a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1H7v2h2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4zm10 0h-4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1h-3v2h2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4z"/></svg></div>
+                  <p>I get instant notifications when my daughter arrives at school or when results are posted. It gives me real peace of mind every single day.</p>
+                  <div class="stars">★★★★★</div>
+                  <div class="tst-user">
+                    <img src="img/image-93-copyright-120x120.webp" alt="Collin Gordon">
+                    <div><b>Collin Gordon</b><small>Parent, Grade 2</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tst-slide">
+                <div class="tst-card">
+                  <div class="quote-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M10 7H6a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1H7v2h2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4zm10 0h-4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-1h-3v2h2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4z"/></svg></div>
+                  <p>Being able to message my son's teacher directly on the portal saved us so much time. The communication is open and effortless.</p>
+                  <div class="stars">★★★★★</div>
+                  <div class="tst-user">
+                    <img src="img/image-84-copyright-120x120.webp" alt="Lily Miles">
+                    <div><b>Lily Miles</b><small>Parent, Grade 5</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tst-nav">
+              <button data-prev aria-label="Previous"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <button data-next aria-label="Next"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+            <div class="tst-dots"></div>
+          </div>
+        </div>
+        <div class="tst-side reveal reveal-right">
+          <div class="video-box">
+            <img src="img/image-16-copyright.webp" alt="School community">
+            <button class="play" aria-label="Play video"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+            <div class="v-cap">Watch our portal tour</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. WHO WE ARE ============ -->
+  <section class="who-we-are">
+    <div class="container">
+      <div class="who-grid">
+        <div class="who-content reveal reveal-left">
+          <span class="sec-sub">Why Families Choose Us</span>
+          <h2>Ensuring Peace of Mind Through Open, <span class="bubble">Transparent</span> Communication</h2>
+          <p>Our portal was built with one goal: to make parent–school communication effortless, secure and meaningful for the whole community.</p>
+          <ul class="who-list">
+            <li>
+              <span class="ic"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+              <div><b>Bank-grade security</b><p>Your family's data is protected with encryption and strict privacy controls.</p></div>
+            </li>
+            <li>
+              <span class="ic"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <div><b>Dedicated teacher support</b><p>Every class stays connected with quick responses from experienced teachers.</p></div>
+            </li>
+            <li>
+              <span class="ic"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>
+              <div><b>Real-time updates</b><p>Attendance, grades and announcements arrive the moment they're published.</p></div>
+            </li>
+          </ul>
+          <a href="about.html" class="btn accent"><span>Learn More About Us</span></a>
+        </div>
+        <div class="who-media reveal reveal-right">
+          <div class="img-main">
+            <img src="img/image-20-copyright.webp" alt="Parent and teacher connecting">
+          </div>
+          <div class="exp-badge"><b>12+</b><span>Years connecting families &amp; schools</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. PROGRAMS / COMMUNICATION TOOLS ============ -->
+  <section class="program">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">Programs &amp; Tools</span>
+        <h2>Everything Families Need in One Place</h2>
+        <p>From daily messages to full academic reports, our tools keep every conversation with school effortless.</p>
+      </div>
+      <div class="program-grid">
+        <article class="program-card reveal">
+          <div class="img-wrap">
+            <img src="img/image-50-copyright.webp" alt="Secure messaging">
+            <span class="price">Messaging</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Secure Messaging</h4>
+            <p>Chat privately with teachers and staff for quick answers and easy follow-ups, all in one thread.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></i>&nbsp;Private &amp; safe</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;Fast replies</span></div>
+          </div>
+        </article>
+        <article class="program-card reveal d1">
+          <div class="img-wrap">
+            <img src="img/image-58-copyright.webp" alt="Progress reports">
+            <span class="price">Reports</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Progress Reports</h4>
+            <p>Follow grades, teacher feedback and term performance with clear, easy-to-read report cards.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></i>&nbsp;Transparent</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;All term</span></div>
+          </div>
+        </article>
+        <article class="program-card reveal d2">
+          <div class="img-wrap">
+            <img src="img/image-59-copyright.webp" alt="Events calendar">
+            <span class="price">Events</span>
+            <span class="icon-tag"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          </div>
+          <div class="txt">
+            <h4>Events &amp; Calendar</h4>
+            <p>Book parent–teacher meetings and browse the school calendar with one-tap reminders.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></i>&nbsp;Reminders</span><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>&nbsp;Booking</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. WHY CHOOSE US ============ -->
+  <section class="features" style="background:var(--paper);">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">Why Choose Us</span>
+        <h2>Better Days for Parents &amp; Schools</h2>
+        <p>Small improvements every day add up to a happier, more connected school community.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <span class="fnum">01</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h4>Trust You Can Feel</h4>
+          <p>Encrypted data and strict privacy controls protect every child and family.</p>
+        </div>
+        <div class="feature-card reveal d1">
+          <span class="fnum">02</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>Always On Time</h4>
+          <p>Notifications arrive instantly so important news never slips through the cracks.</p>
+        </div>
+        <div class="feature-card reveal d2">
+          <span class="fnum">03</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h4>Simple for Everyone</h4>
+          <p>Intuitive and familiar, the portal is easy for parents, teachers and staff alike.</p>
+        </div>
+        <div class="feature-card reveal d3">
+          <span class="fnum">04</span>
+          <div class="ficon"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>Supportive Community</h4>
+          <p>Friendly, real people help families and schools every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. CAMPUS GALLERY ============ -->
+  <section class="program" style="background:var(--white);">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">Campus Life</span>
+        <h2>Life at Stackly</h2>
+        <p>A glimpse into the classrooms, corridors and community that make our district special.</p>
+      </div>
+      <div class="program-grid">
+        <article class="program-card reveal">
+          <div class="img-wrap">
+            <img src="img/image-20-copyright.webp" alt="Classroom learning">
+          </div>
+          <div class="txt">
+            <h4>Inspiring Classrooms</h4>
+            <p>Bright, modern spaces where students love to learn and grow together.</p>
+          </div>
+        </article>
+        <article class="program-card reveal d1">
+          <div class="img-wrap">
+            <img src="img/image-17-copyright.webp" alt="Students collaborating">
+          </div>
+          <div class="txt">
+            <h4>Hands-on Learning</h4>
+            <p>Projects, group work and activities that build confidence and curious minds.</p>
+          </div>
+        </article>
+        <article class="program-card reveal d2">
+          <div class="img-wrap">
+            <img src="img/image-18-copyright.webp" alt="School community">
+          </div>
+          <div class="txt">
+            <h4>Connected Community</h4>
+            <p>Families and staff come together for events and shared celebrations all year.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12. PROCESS / GETTING STARTED ============ -->
+  <section class="process">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">Getting Started</span>
+        <h2>Join in Under a Minute</h2>
+        <p>Four simple steps from your first visit to staying connected all year.</p>
+      </div>
+      <div class="process-steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h4>Request Access</h4>
+          <p>Send a quick message and our team sets up a secure portal account for you.</p>
+        </div>
+        <div class="step reveal d1">
+          <div class="num">02</div>
+          <h4>Link Your Child</h4>
+          <p>Connect your child's classes so updates come straight to your family.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="num">03</div>
+          <h4>Get Daily Updates</h4>
+          <p>Receive attendance, assignments, results and announcements in real time.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="num">04</div>
+          <h4>Stay Engaged</h4>
+          <p>Message teachers, track progress and book events whenever you need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. FAQ ============ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-media reveal reveal-left">
+          <img src="img/image-21-copyright.webp" alt="Parents guide">
+          <div class="ask-badge"><b>Have a Question?</b><small>We answer within 24 hours</small></div>
+        </div>
+        <div class="reveal reveal-right">
+          <div class="sec-head" style="text-align:left;margin:0 0 32px;">
+            <span class="sec-sub">Questions &amp; Answers</span>
+            <h2>Parents' Guide to the Portal</h2>
+          </div>
+          <div class="acc-item open">
+            <button class="acc-head" type="button">How do I get access to my child's portal?<span class="acc-ic"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="acc-body"><p>Each family receives a secure access key by email — simply activate it and link your child's classes to get started.</p></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button">How quickly do I see grades and attendance?<span class="acc-ic"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="acc-body"><p>Updates appear in real time as teachers publish them — no waiting for the next report card.</p></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button">Can I message my child's teacher directly?<span class="acc-ic"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="acc-body"><p>Yes — built-in secure messaging lets you chat with teachers and school staff anytime during working hours.</p></div>
+          </div>
+          <p style="margin-top:18px;font-size:.95rem;"><a href="contact.html" style="color:var(--link);font-weight:700;">Still have questions? Talk to us →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14. ANNOUNCEMENTS ============ -->
+  <section class="news">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-sub">News &amp; Updates</span>
+        <h2>Latest From the Portal</h2>
+      </div>
+      <div class="news-grid">
+        <article class="news-card reveal">
+          <div class="img-wrap">
+            <span class="cat">Announcement</span>
+            <img src="img/image-50-copyright.webp" alt="New portal feature">
+            <span class="date"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Aug 28, 2026</span>
+          </div>
+          <div class="txt">
+            <h4><a href="features.html">New real-time attendance alerts now live</a></h4>
+            <p class="excerpt">Parents now receive instant notifications the moment their child checks in or out of school.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>&nbsp;0 Comments</span><a href="features.html" style="color:var(--link);font-weight:700;margin-left:auto;">Read More →</a></div>
+          </div>
+        </article>
+        <article class="news-card reveal d1">
+          <div class="img-wrap">
+            <span class="cat">Exams</span>
+            <img src="img/image-58-copyright.webp" alt="Results release">
+            <span class="date"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Aug 20, 2026</span>
+          </div>
+          <div class="txt">
+            <h4><a href="academic.html">Term results are now available online</a></h4>
+            <p class="excerpt">Access your child's grades and teacher feedback directly from the portal dashboard.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>&nbsp;0 Comments</span><a href="academic.html" style="color:var(--link);font-weight:700;margin-left:auto;">Read More →</a></div>
+          </div>
+        </article>
+        <article class="news-card reveal d2">
+          <div class="img-wrap">
+            <span class="cat">Events</span>
+            <img src="img/image-59-copyright.webp" alt="Upcoming event">
+            <span class="date"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Aug 15, 2026</span>
+          </div>
+          <div class="txt">
+            <h4><a href="events.html">Parent–teacher meetings: book your slot</a></h4>
+            <p class="excerpt">Scheduling is now open — choose a convenient time directly through the portal.</p>
+            <div class="p-meta"><span><i><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>&nbsp;0 Comments</span><a href="events.html" style="color:var(--link);font-weight:700;margin-left:auto;">Read More →</a></div>
+          </div>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:44px;" class="reveal">
+        <a href="events.html" class="btn"><span>View All Updates</span>
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 15. CTA ============ -->
+  <section class="cta" style="background-image:url('img/image-16-copyright.webp')">
+    <div class="container">
+      <div class="sec-head reveal" style="margin-bottom:34px;">
+        <span class="sec-sub">Join the Portal</span>
+        <h2>Connect With Your Child's School Today!</h2>
+        <p>Simple, secure and always up to date — sign in and start with effortless communication.</p>
+      </div>
+      <div class="hero-cta reveal d1">
+        <a href="contact.html" class="btn"><span>Contact Us</span></a>
+        <a href="login.html" class="btn accent"><span>Login Now</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter">
+        <div class="newsletter-head">
+          <h3>Stay in the loop with your child's school</h3>
+          <p>Join the Parent–School Communication Portal newsletter for timely updates on grades, attendance, events and tips that help families and teachers work together.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-input">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/></svg>
+            <input type="email" id="newsletterEmail" name="newsletter_email" placeholder="Enter your email address" aria-label="Email address" autocomplete="email">
+          </div>
+          <button type="submit" class="btn accent"><span><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg> Subscribe</span></button>
+          <p class="newsletter-msg" id="newsletterMsg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 16. FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div class="footer-col">
+          <a class="footer-brand-link" href="index.html" title="Back to Home"><img class="footer-brand" src="img/logo.webp" alt="Stackly"></a>
+          <p class="footer-about">Stay connected with your child's school, teachers, and academic journey through one simple platform.</p>
+          <div class="footer-socials">
+            <a href="404.html" aria-label="Instagram"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="404.html" aria-label="Facebook"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="404.html" aria-label="YouTube"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+            <a href="404.html" aria-label="X"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h12"/></svg> Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="academic.html">Academic Performance</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Parent Resources</h5>
+          <ul>
+            <li><a href="academic.html">Student Progress</a></li>
+            <li><a href="academic.html">Attendance</a></li>
+            <li><a href="academic.html">Assignments</a></li>
+            <li><a href="index.html">Announcements</a></li>
+            <li><a href="events.html">School Events</a></li>
+            <li><a href="contact.html">Teacher Communication</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/></svg></i><a href="mailto:support@stackly.com">support@stackly.com</a></li>
+            <li><i><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></i><span>+91 XXXXX XXXXX</span></li>
+            <li><i><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i><span>Mon – Fri: 9:00 AM – 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Stackly. All Rights Reserved.</span>
+        <div class="footer-tagline">Connecting Parents, Teachers, and Schools for Better Student Success.</div>
+        <div class="bb-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mobile-menu">
+    <button class="close-btn" aria-label="Close menu"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="about.html" data-page="about">About</a></li>
+        <li><a href="features.html" data-page="features">Features</a></li>
+        <li><a href="services.html" data-page="services">Services</a></li>
+        <li><a href="academic.html" data-page="academic">Academic Performance</a></li>
+        <li><a href="events.html" data-page="events">Events</a></li>
+        <li><a href="contact.html" data-page="contact">Contact</a></li>
+        <li><a href="login.html" data-page="login" style="color:var(--accent);">Login</a></li>
+      </ul>
+      <div class="mm-socials">
+        <a href="404.html" aria-label="Facebook"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="404.html" aria-label="Twitter"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg></a>
+        <a href="404.html" aria-label="Instagram"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="404.html" aria-label="LinkedIn"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </nav>
+  </div>
+
+  <button class="back-top" aria-label="Back to top"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

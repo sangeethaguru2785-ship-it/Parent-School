@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Dashboard – Parent–School Communication Portal</title>
+  <meta name="description" content="Parent dashboard to view your child's academic performance, attendance, assignments, upcoming events, school announcements, teacher messages, and progress.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Kumbh+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="icon" href="img/cropped-favicon-32x32.webp">
+  <script>
+    (function () {
+      var s = null;
+      try { s = JSON.parse(localStorage.getItem('portal_user') || 'null'); } catch (e) { s = null; }
+      if (!s || s.role !== 'parent') {
+        window.location.replace('login.html');
+      }
+    })();
+  </script>
+</head>
+<body class="dash-body" data-default="overview">
+
+<div class="side-backdrop" id="sideBackdrop"></div>
+
+<!-- SIDEBAR -->
+<aside class="dash-side" id="dashSide">
+  <div class="side-brand">
+    <img src="img/logo.webp" alt="Stackly">
+    <div class="b-txt">
+      <strong>Stackly Portal</strong>
+      <span>Parent</span>
+    </div>
+  </div>
+  <nav class="side-nav">
+    <div class="nav-label">Main Menu</div>
+    <a href="#/overview" class="active" data-view="overview" data-label="Overview"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span>Overview</span></a>
+    <a href="#/child" data-view="child" data-label="My Child"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>My Child</span></a>
+    <a href="#/academics" data-view="academics" data-label="Academic Performance"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Academic Performance</span></a>
+    <a href="#/attendance" data-view="attendance" data-label="Attendance"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Attendance</span></a>
+    <a href="#/assignments" data-view="assignments" data-label="Assignments"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Assignments</span></a>
+    <div class="nav-label">School</div>
+    <a href="#/events" data-view="events" data-label="Events"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Events</span></a>
+    <a href="#/announcements" data-view="announcements" data-label="Announcements"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Announcements</span></a>
+    <div class="nav-label">Communication</div>
+    <a href="#/messages" data-view="messages" data-label="Messages"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Messages</span> <span class="badge">3</span></a>
+    <a href="#/profile" data-view="profile" data-label="Profile"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Profile</span></a>
+    <a href="#/settings" data-view="settings" data-label="Settings"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94"/><path d="M9.69 8h11.48"/><path d="M7.38 12l5.74-9.94"/><path d="M9.69 16L3.95 6.06"/><path d="M14.31 16H2.83"/><path d="M16.62 12l-5.74 9.94"/></svg><span>Settings</span></a>
+    <a href="login.html" class="js-signout"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Sign Out</span></a>
+    <a href="index.html" class="js-gohome"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span>Go to Home</span></a>
+  </nav>
+  <div class="side-foot">© 2026 Stackly. Family portal.</div>
+</aside>
+
+<!-- MAIN -->
+<div class="dash-main">
+  <header class="dash-topbar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <div class="topbar-right">
+      <button class="icon-btn" data-goto="messages" aria-label="Messages"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="dot"></span></button>
+      <button class="icon-btn" data-goto="announcements" aria-label="Notifications"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="dot"></span></button>
+      <div class="topbar-user" style="padding-left:12px;border-left:1px solid var(--border);">
+        <div class="avatar">DR</div>
+        <div class="u-txt">
+          <strong>Daniel Reed</strong>
+          <span>Parent • Ava's family</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dash-content">
+    <!-- ============ OVERVIEW ============ -->
+    <section class="dash-view active" data-view="overview">
+      <div class="dash-welcome">
+        <div>
+          <h1>Hi, <span>Daniel</span> 👋</h1>
+          <p>Here's Ava Robinson's latest progress and everything happening at school.</p>
+        </div>
+        <div class="dash-actions">
+          <button class="btn outline icon-sm" data-goto="child"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Ava Robinson</span></button>
+          <button class="btn accent icon-sm" data-goto="messages"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Message Teacher</span></button>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="kpi-body">
+            <div class="val" data-count="91" data-suffix="%">0</div>
+            <div class="lbl">Overall Average</div>
+            <div class="chg up"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +3% vs last term</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="kpi-body">
+            <div class="val" data-count="94" data-suffix="%">0</div>
+            <div class="lbl">Attendance</div>
+            <div class="chg up"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Only 2 days missed</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="kpi-body">
+            <div class="val"><span data-count="2">0</span> <small>pending</small></div>
+            <div class="lbl">Assignments Due</div>
+            <div class="chg down"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg> Due this week</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="kpi-body">
+            <div class="val"><span data-count="3">0</span> <small>new</small></div>
+            <div class="lbl">Teacher Messages</div>
+            <div class="chg up"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> 1 unread</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Progress / Performance</h3>
+            <span class="tag purple">Term 2</span>
+          </div>
+          <div class="chart-bars">
+            <div class="bar-row"><span class="b-lbl">Maths</span><div class="b-track"><div class="b-fill" data-w="94"></div></div><span class="b-val">A • 94</span></div>
+            <div class="bar-row accent"><span class="b-lbl">Science</span><div class="b-track"><div class="b-fill" data-w="91"></div></div><span class="b-val">A- • 91</span></div>
+            <div class="bar-row"><span class="b-lbl">Language</span><div class="b-track"><div class="b-fill" data-w="92"></div></div><span class="b-val">A • 92</span></div>
+            <div class="bar-row green"><span class="b-lbl">Social Studies</span><div class="b-track"><div class="b-fill" data-w="85"></div></div><span class="b-val">B+ • 85</span></div>
+            <div class="bar-row accent"><span class="b-lbl">Art</span><div class="b-track"><div class="b-fill" data-w="96"></div></div><span class="b-val">A+ • 96</span></div>
+            <div class="bar-row"><span class="b-lbl">PE</span><div class="b-track"><div class="b-fill" data-w="93"></div></div><span class="b-val">A • 93</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Attendance Overview</h3>
+            <span class="tag green">94% present</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 42 42" width="160" height="160">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f4f6fb" stroke-width="5"></circle>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#16a34a" stroke-width="5" stroke-dasharray="92 8" stroke-dashoffset="4.5" stroke-linecap="round"></circle>
+              </svg>
+              <div class="d-center"><div><strong>94%</strong><br><span>Present</span></div></div>
+            </div>
+            <div class="legend">
+              <div class="li"><span class="sw" style="background:#16a34a"></span> Present <b>30</b></div>
+              <div class="li"><span class="sw" style="background:#f29e06"></span> Late <b>1</b></div>
+              <div class="li"><span class="sw" style="background:#e71d36"></span> Absent <b>1</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid g3 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Academic Performance</h3>
+            <a href="#/academics" class="card-link" data-goto="academics">Reports</a>
+          </div>
+          <ul class="mini-list">
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="m-txt"><strong>Term 2 Report</strong><span>Issued Aug 15 • Ms. Reed</span></div><div class="m-meta"><span class="tag green">View</span></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div class="m-txt"><strong>Reading Feedback</strong><span>From Mr. Silva • Feb</span></div><div class="m-meta"><span class="tag purple">New</span></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="m-txt"><strong>Mid-Year Results</strong><span>Issued Dec • Examination</span></div><div class="m-meta"><span class="tag purple">Archive</span></div></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Assignments &amp; Homework</h3>
+            <a href="#/assignments" class="card-link" data-goto="assignments">All work</a>
+          </div>
+          <ul class="mini-list">
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="m-txt"><strong>Fractions Worksheet</strong><span>Due Fri • Not yet done</span></div><div class="m-meta"><span class="tag yellow">Due soon</span></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="m-txt"><strong>Science Poster</strong><span>Due Mon • In progress</span></div><div class="m-meta"><span class="tag purple">Open</span></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="m-txt"><strong>Reading Log</strong><span>Submitted • Graded A</span></div><div class="m-meta"><span class="tag green">Graded</span></div></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Upcoming Events</h3>
+            <a href="#/events" class="card-link" data-goto="events">All events</a>
+          </div>
+          <ul class="mini-list">
+            <li><button class="m-item" data-goto="events"><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="m-txt"><strong>Parent–Teacher Conference</strong><span>Sep 05 • 8:30 AM</span></div><div class="m-meta"><span class="tag red">RSVP</span></div></button></li>
+            <li><button class="m-item" data-goto="events"><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="m-txt"><strong>Science Fair</strong><span>Sep 12 • 10:00 AM</span></div><div class="m-meta"><span class="tag yellow">Soon</span></div></button></li>
+            <li><button class="m-item" data-goto="events"><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="m-txt"><strong>Book Fair</strong><span>Sep 19 • 9:00 AM</span></div><div class="m-meta"><span class="tag purple">12d</span></div></button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dash-grid g3 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> School Announcements</h3>
+            <a href="#/announcements" class="card-link" data-goto="announcements">All</a>
+          </div>
+          <div class="ann-item">
+            <div class="ann-date"><b>28</b><span>Aug</span></div>
+            <div class="ann-txt">
+              <strong>Parent–Teacher Conference slots open</strong>
+              <p>Book your 15-minute slot for Sep 05 in the portal.</p>
+              <small>Posted by Ms. Reed</small>
+            </div>
+          </div>
+          <div class="ann-item">
+            <div class="ann-date"><b>27</b><span>Aug</span></div>
+            <div class="ann-txt">
+              <strong>Science Fair permission slips</strong>
+              <p>Slips due Friday, Sep 04. Check school bags.</p>
+              <small>Posted by Mr. Silva</small>
+            </div>
+          </div>
+          <div class="ann-item">
+            <div class="ann-date"><b>26</b><span>Aug</span></div>
+            <div class="ann-txt">
+              <strong>School closed — Sep 08 (Holiday)</strong>
+              <p>Classes resume Wednesday, Sep 09.</p>
+              <small>Posted by Head Office</small>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Teacher Messages</h3>
+            <a href="#/messages" class="card-link" data-goto="messages">Inbox</a>
+          </div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="a-txt"><strong>Ms. Reed · Class 4-B</strong><span>Re: Ava's maths progress — great improvement!</span><time>Today, 9:10 AM</time></div></div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="a-txt"><strong>Mr. Silva · Language</strong><span>Re: Reading feedback attached</span><time>Yesterday, 4:30 PM</time></div></div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="a-txt"><strong>Coach Diaz · PE</strong><span>Field day consent form needs signature</span><time>Mon, 2:00 PM</time></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Recent Activities</h3>
+          </div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="a-txt"><strong>Reading Log graded</strong><span>Scored A by Mr. Silva</span><time>2 hours ago</time></div></div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="a-txt"><strong>Attendance updated</strong><span>Marked present · Today</span><time>8:30 AM</time></div></div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="a-txt"><strong>Event: Science Fair added</strong><span>New school event announced</span><time>Yesterday</time></div></div>
+          <div class="activity"><div class="a-ic"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="a-txt"><strong>New announcement</strong><span>Conference slots open</span><time>Yesterday</time></div></div>
+        </div>
+      </div>
+
+      <div class="dash-grid g4 section-gap">
+        <div class="card" style="grid-column:1/-1;">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Subject-wise Report Card</h3>
+            <span class="tag purple">Term 2 • Ava Robinson</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dash-table">
+              <thead>
+                <tr><th>Subject</th><th>Teacher</th><th>Grade</th><th>Score</th><th class="hide-sm">Progress</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong style="color:var(--dark)">Mathematics &amp; Logic</strong></td><td>Ms. Reed</td><td>A</td><td>94%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:94%"></div></div><b>94</b></div></td><td><span class="tag green">Excellent</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Science &amp; Nature</strong></td><td>Mr. Silva</td><td>A-</td><td>91%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:91%"></div></div><b>91</b></div></td><td><span class="tag green">Excellent</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Language &amp; Reading</strong></td><td>Mr. Silva</td><td>A</td><td>92%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:92%"></div></div><b>92</b></div></td><td><span class="tag green">Excellent</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Social Studies</strong></td><td>Ms. Reed</td><td>B+</td><td>85%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:85%"></div></div><b>85</b></div></td><td><span class="tag yellow">Good</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Arts &amp; Creativity</strong></td><td>Ms. Clarke</td><td>A+</td><td>96%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:96%"></div></div><b>96</b></div></td><td><span class="tag green">Excellent</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Physical Education</strong></td><td>Coach Diaz</td><td>A</td><td>93%</td><td class="hide-sm"><div class="td-bar"><div class="mini-track"><div class="mini-fill" style="width:93%"></div></div><b>93</b></div></td><td><span class="tag green">Excellent</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MY CHILD ============ -->
+    <section class="dash-view" data-view="child">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>My Child</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> My Child</h1>
+          <p>A day-by-day look at Ava's school life, teachers and activities.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="Ava's school profile downloaded"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Export</span></button>
+          <button class="btn accent sm" data-modal="messageTeacherModal"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Message Teacher</span></button>
+        </div>
+      </div>
+
+      <div class="card profile-head section-gap">
+        <div class="profile-ava">AR</div>
+        <div class="profile-info">
+          <h2>Ava Robinson</h2>
+          <p>Class 4-B • Student ID A-1024</p>
+          <div class="meta-tags">
+            <span class="tag purple">Age 9</span>
+            <span class="tag green">Maths Club</span>
+            <span class="tag yellow">Guardian: Daniel Reed</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="p-stat"><div class="val">91%</div><span>Class Avg</span></div>
+          <div class="p-stat"><div class="val">94%</div><span>Attendance</span></div>
+          <div class="p-stat"><div class="val">A+</div><span>Best Grade</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-grid section-gap">
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="91" data-suffix="%">0</span></div><div class="lbl">Overall Average</div><div class="chg up">Top 10% of class</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="94" data-suffix="%">0</span></div><div class="lbl">Attendance</div><div class="chg up">2 days missed</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="5">0</span> <small>subjects</small></div><div class="lbl">On Track</div><div class="chg up">Green status</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="2">0</span> <small>hrs</small></div><div class="lbl">Homework This Week</div><div class="chg up">Under guideline</div></div>
+        </div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Today at School</h3>
+            <span class="tag purple">Fri, Aug 28</span>
+          </div>
+          <div class="timeline">
+            <div class="tl-item green"><strong>Attendance — Present</strong><span>Marked at the gate, on time</span><time>8:15 AM</time></div>
+            <div class="tl-item"><strong>Maths with Ms. Reed</strong><span>Fractions worksheet — she aced the warm-up quiz</span><time>9:00 AM</time></div>
+            <div class="tl-item alt"><strong>Science Fair prep</strong><span>Volcano model checked, looks great!</span><time>11:30 AM</time></div>
+            <div class="tl-item"><strong>Lunch &amp; recess</strong><span>Played capture-the-flag with the class</span><time>12:30 PM</time></div>
+            <div class="tl-item"><strong>Art &amp; Creativity</strong><span>Started abstract portrait project</span><time>2:00 PM</time></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Ava's Teachers</h3>
+            <a href="#/messages" class="card-link" data-goto="messages">Message all</a>
+          </div>
+          <ul class="mini-list">
+            <li><div class="t-avatar">SR</div><div class="m-txt"><strong>Ms. Sarah Reed</strong><span>Maths &amp; Science • Form teacher</span></div><div class="m-meta"><button class="btn xs ghost" data-modal="messageTeacherModal">Message</button></div></li>
+            <li><div class="t-avatar gold">AS</div><div class="m-txt"><strong>Mr. Alan Silva</strong><span>Language &amp; Social Studies</span></div><div class="m-meta"><button class="btn xs ghost" data-modal="messageTeacherModal">Message</button></div></li>
+            <li><div class="t-avatar green">NC</div><div class="m-txt"><strong>Ms. Nora Clarke</strong><span>Art &amp; Creativity</span></div><div class="m-meta"><button class="btn xs ghost" data-modal="messageTeacherModal">Message</button></div></li>
+            <li><div class="t-avatar red">PD</div><div class="m-txt"><strong>Coach Pete Diaz</strong><span>Physical Education</span></div><div class="m-meta"><button class="btn xs ghost" data-modal="messageTeacherModal">Message</button></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card-head">
+          <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Weekly Timetable</h3>
+          <span class="tag green">Term 2</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="dash-table">
+            <thead><tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--dark)">8:30</strong></td><td>Assembly</td><td>Maths</td><td>Assembly</td><td>Science</td><td>Assembly</td></tr>
+              <tr><td><strong style="color:var(--dark)">9:00</strong></td><td>Maths</td><td>Language</td><td>Maths</td><td>Language</td><td>Maths</td></tr>
+              <tr><td><strong style="color:var(--dark)">10:30</strong></td><td>Science</td><td>Social Studies</td><td>Language</td><td>Maths</td><td>Social Studies</td></tr>
+              <tr><td><strong style="color:var(--dark)">12:30</strong></td><td>Lunch</td><td>Lunch</td><td>Lunch</td><td>Lunch</td><td>Lunch</td></tr>
+              <tr><td><strong style="color:var(--dark)">2:00</strong></td><td>Art</td><td>Science</td><td>PE</td><td>Art</td><td>Science</td></tr>
+              <tr><td><strong style="color:var(--dark)">3:15</strong></td><td>Maths Club</td><td>Reading</td><td>Maths Club</td><td>Reading</td><td>PE</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACADEMICS ============ -->
+    <section class="dash-view" data-view="academics">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Academic Performance</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Academic Performance</h1>
+          <p>Track Ava's grades, trends and teacher feedback across the term.</p>
+        </div>
+        <div class="page-actions">
+          <select class="filter-select" aria-label="Term"><option>Term 2 — 2026</option><option>Term 1 — 2026</option></select>
+          <button class="btn ghost sm" data-save="Report card downloaded for Ava Robinson"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Download Report</span></button>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="91" data-suffix="%">0</span></div><div class="lbl">Overall Average</div><div class="chg up"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> +3% vs last term</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.31 8l5.74 9.94"/><path d="M9.69 8h11.48"/><path d="M7.38 12l5.74-9.94"/><path d="M9.69 16L3.95 6.06"/><path d="M14.31 16H2.83"/><path d="M16.62 12l-5.74 9.94"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="96" data-suffix="%">0</span></div><div class="lbl">Best Subject — Art</div><div class="chg up">A+ Grade</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="5">0</span> <small>of 6</small></div><div class="lbl">Subjects at Grade A</div><div class="chg up">Improving</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="91" data-suffix="%">0</span></div><div class="lbl">Class Rank Position</div><div class="chg up">Top 10%</div></div>
+        </div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Grades by Subject</h3>
+            <span class="tag purple">Term 2</span>
+          </div>
+          <div class="chart-bars">
+            <div class="bar-row"><span class="b-lbl">Maths</span><div class="b-track"><div class="b-fill" data-w="94"></div></div><span class="b-val">A • 94</span></div>
+            <div class="bar-row accent"><span class="b-lbl">Science</span><div class="b-track"><div class="b-fill" data-w="91"></div></div><span class="b-val">A- • 91</span></div>
+            <div class="bar-row"><span class="b-lbl">Language</span><div class="b-track"><div class="b-fill" data-w="92"></div></div><span class="b-val">A • 92</span></div>
+            <div class="bar-row green"><span class="b-lbl">Social Studies</span><div class="b-track"><div class="b-fill" data-w="85"></div></div><span class="b-val">B+ • 85</span></div>
+            <div class="bar-row accent"><span class="b-lbl">Art</span><div class="b-track"><div class="b-fill" data-w="96"></div></div><span class="b-val">A+ • 96</span></div>
+            <div class="bar-row"><span class="b-lbl">PE</span><div class="b-track"><div class="b-fill" data-w="93"></div></div><span class="b-val">A • 93</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Grade Distribution</h3>
+            <span class="tag green">6 subjects</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 42 42" width="150" height="150">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f4f6fb" stroke-width="5"></circle>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#16a34a" stroke-width="5" stroke-dasharray="84 16" stroke-dashoffset="8" stroke-linecap="round"></circle>
+              </svg>
+              <div class="d-center"><div><strong>83%</strong><br><span>A range</span></div></div>
+            </div>
+            <div class="legend">
+              <div class="li"><span class="sw" style="background:#16a34a"></span> A / A+ <b>5</b></div>
+              <div class="li"><span class="sw" style="background:#f29e06"></span> B+ <b>1</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card-head">
+          <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Academic Trend</h3>
+          <span class="tag purple">3 terms</span>
+        </div>
+        <div class="line-chart" data-values="78,84,88,91" data-labels="Term 1|Term 1 End|Term 2 Start|Term 2 Now"></div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Report Card — Term 2</h3>
+            <span class="tag green">Ava Robinson</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dash-table">
+              <thead><tr><th>Subject</th><th>Teacher</th><th>Grade</th><th class="hide-sm">Score</th><th>Trend</th></tr></thead>
+              <tbody>
+                <tr><td><strong style="color:var(--dark)">Mathematics &amp; Logic</strong></td><td>Ms. Reed</td><td>A</td><td class="hide-sm">94%</td><td><span class="arrow-up">▲ +2</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Science &amp; Nature</strong></td><td>Mr. Silva</td><td>A-</td><td class="hide-sm">91%</td><td><span class="arrow-up">▲ +3</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Language &amp; Reading</strong></td><td>Mr. Silva</td><td>A</td><td class="hide-sm">92%</td><td><span class="arrow-up">▲ +1</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Social Studies</strong></td><td>Ms. Reed</td><td>B+</td><td class="hide-sm">85%</td><td><span class="arrow-up">▲ +2</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Arts &amp; Creativity</strong></td><td>Ms. Clarke</td><td>A+</td><td class="hide-sm">96%</td><td><span class="arrow-up">▲ +2</span></td></tr>
+                <tr><td><strong style="color:var(--dark)">Physical Education</strong></td><td>Coach Diaz</td><td>A</td><td class="hide-sm">93%</td><td><span class="arrow-up">▲ +1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Reports &amp; Feedback</h3>
+            <a href="#/messages" class="card-link" data-goto="messages">Ask teacher</a>
+          </div>
+          <ul class="mini-list">
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="m-txt"><strong>Term 2 Report Card</strong><span>Issued Aug 15 • Ms. Reed</span></div><div class="m-meta"><button class="btn xs ghost" data-save="Term 2 report card downloading">Download</button></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div class="m-txt"><strong>Reading Feedback</strong><span>From Mr. Silva • Jaunting progress</span></div><div class="m-meta"><span class="tag purple">New</span></div></li>
+            <li><div class="m-ic"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="m-txt"><strong>Mid-Year Results</strong><span>Issued Dec • Examination</span></div><div class="m-meta"><button class="btn xs ghost" data-save="Mid-year results downloading">Download</button></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ATTENDANCE ============ -->
+    <section class="dash-view" data-view="attendance">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Attendance</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Attendance</h1>
+          <p>Ava's attendance record for the current term.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="Attendance certificate downloading for Ava Robinson"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Download Certificate</span></button>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="94" data-suffix="%">0</span></div><div class="lbl">Overall Rate</div><div class="chg up">Good standing</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="30">0</span> <small>days</small></div><div class="lbl">Present</div><div class="chg up">94% of school days</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="1">0</span></div><div class="lbl">Late Arrivals</div><div class="chg down">1 entry in Aug</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="1">0</span> <small>day</small></div><div class="lbl">Absent</div><div class="chg down">Medical — excused</div></div>
+        </div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> This Week</h3>
+            <span class="tag purple">Aug 24–28</span>
+          </div>
+          <div class="col-chart">
+            <div class="cc-col"><div class="cc-bar green" data-h="100"><span class="c-val">100%</span></div><span>Mon</span></div>
+            <div class="cc-col"><div class="cc-bar green" data-h="100"><span class="c-val">100%</span></div><span>Tue</span></div>
+            <div class="cc-col"><div class="cc-bar green" data-h="100"><span class="c-val">100%</span></div><span>Wed</span></div>
+            <div class="cc-col"><div class="cc-bar green" data-h="100"><span class="c-val">100%</span></div><span>Thu</span></div>
+            <div class="cc-col"><div class="cc-bar green" data-h="100"><span class="c-val">100%</span></div><span>Fri</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Term Snapshot</h3>
+            <span class="tag green">94% present</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 42 42" width="150" height="150">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f4f6fb" stroke-width="5"></circle>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#16a34a" stroke-width="5" stroke-dasharray="92 8" stroke-dashoffset="4.5" stroke-linecap="round"></circle>
+              </svg>
+              <div class="d-center"><div><strong>94%</strong><br><span>Present</span></div></div>
+            </div>
+            <div class="legend">
+              <div class="li"><span class="sw" style="background:#16a34a"></span> Present <b>30</b></div>
+              <div class="li"><span class="sw" style="background:#f29e06"></span> Late <b>1</b></div>
+              <div class="li"><span class="sw" style="background:#e71d36"></span> Absent <b>1</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card-head">
+          <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Attendance Record — Term 2</h3>
+            <span class="tag purple">Mon–Fri</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dash-table">
+              <thead><tr><th>Week</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="hide-sm">Weekly Rate</th></tr></thead>
+              <tbody>
+                <tr><td><strong style="color:var(--dark)">Aug 3–7</strong></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td class="hide-sm"><b style="color:var(--dark)">100%</b></td></tr>
+                <tr><td><strong style="color:var(--dark)">Aug 10–14</strong></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag yellow">Late</span></td><td class="hide-sm"><b style="color:var(--dark)">100%</b></td></tr>
+                <tr><td><strong style="color:var(--dark)">Aug 17–21</strong></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag red">Absent</span></td><td class="hide-sm"><b style="color:var(--dark)">80%</b></td></tr>
+                <tr><td><strong style="color:var(--dark)">Aug 24–28</strong></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td><span class="tag green">Present</span></td><td class="hide-sm"><b style="color:var(--dark)">100%</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" style="margin-top:12px;font-size:.84rem;">The single absence on Fri, Aug 21 was for a scheduled medical appointment and is marked as excused. Ava was also marked late once (Fri, Aug 14) after arriving a few minutes past the first bell.</p>
+        </div>
+    </section>
+
+    <!-- ============ ASSIGNMENTS ============ -->
+    <section class="dash-view" data-view="assignments">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Assignments</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Assignments &amp; Homework</h1>
+          <p>Ava's homework, deadlines and graded work for this term.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="Homework plan downloading for Ava Robinson"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Export Plan</span></button>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="2">0</span></div><div class="lbl">Pending</div><div class="chg down">Due this week</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="14">0</span></div><div class="lbl">Submitted</div><div class="chg up">This term</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="kpi-body"><div class="val"><span data-count="3">0</span></div><div class="lbl">Upcoming</div><div class="chg up">Coming weeks</div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-ic"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="kpi-body"><div class="val">A+</div><div class="lbl">Best Grade — Art</div><div class="chg up">Portrait study</div></div>
+        </div>
+      </div>
+
+      <div class="filter-row section-gap">
+        <div class="filter-search">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" data-search="#parentAssignmentTable" placeholder="Search assignments…">
+        </div>
+        <select class="filter-select" aria-label="Subject"><option>All Subjects</option><option>Maths</option><option>Science</option><option>Language</option><option>Art</option></select>
+        <div class="chips" data-target="#parentAssignmentTable">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="due">Due Soon</button>
+          <button class="chip" data-cat="open">Open</button>
+          <button class="chip" data-cat="graded">Graded</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="overflow-x:auto;">
+          <table class="dash-table" id="parentAssignmentTable">
+            <thead><tr><th>Assignment</th><th class="hide-sm">Subject</th><th>Due</th><th class="hide-sm">Submitted</th><th>Status</th><th style="text-align:right;">Grade</th></tr></thead>
+            <tbody>
+              <tr data-cat="due" data-name="Fractions Worksheet Maths">
+                <td><strong style="color:var(--dark)">Fractions Worksheet</strong><span class="muted" style="display:block;">Ms. Reed • Maths</span></td>
+                <td class="hide-sm">Maths</td><td><span class="tag yellow">Sep 02, 2026</span></td><td class="hide-sm">Not yet</td><td><span class="tag red">Due Soon</span></td><td style="text-align:right;"><span class="muted">—</span></td>
+              </tr>
+              <tr data-cat="due" data-name="Book Report The Secret Garden Language">
+                <td><strong style="color:var(--dark)">Book Report — The Secret Garden</strong><span class="muted" style="display:block;">Mr. Silva • Language</span></td>
+                <td class="hide-sm">Language</td><td><span class="tag yellow">Sep 04, 2026</span></td><td class="hide-sm">In progress</td><td><span class="tag red">Due Soon</span></td><td style="text-align:right;"><span class="muted">—</span></td>
+              </tr>
+              <tr data-cat="open" data-name="Science Poster Water Cycle Science">
+                <td><strong style="color:var(--dark)">Science Poster — Water Cycle</strong><span class="muted" style="display:block;">Mr. Silva • Science</span></td>
+                <td class="hide-sm">Science</td><td><span class="tag yellow">Sep 08, 2026</span></td><td class="hide-sm">Draft done</td><td><span class="tag purple">Open</span></td><td style="text-align:right;"><span class="muted">—</span></td>
+              </tr>
+              <tr data-cat="open" data-name="Volcano Model Project Science">
+                <td><strong style="color:var(--dark)">Volcano Model Project</strong><span class="muted" style="display:block;">Mr. Silva • Science</span></td>
+                <td class="hide-sm">Science</td><td><span class="tag yellow">Sep 12, 2026</span></td><td class="hide-sm">In progress</td><td><span class="tag purple">Open</span></td><td style="text-align:right;"><span class="muted">—</span></td>
+              </tr>
+              <tr data-cat="graded" data-name="Reading Log Language">
+                <td><strong style="color:var(--dark)">Reading Log</strong><span class="muted" style="display:block;">Mr. Silva • Language</span></td>
+                <td class="hide-sm">Language</td><td><span class="tag green">Aug 26, 2026</span></td><td class="hide-sm">Submitted</td><td><span class="tag green">Graded</span></td><td style="text-align:right;"><b style="color:var(--dark)">A</b></td></tr>
+              <tr data-cat="graded" data-name="Portrait Study Art">
+                <td><strong style="color:var(--dark)">Abstract Portrait Study</strong><span class="muted" style="display:block;">Ms. Clarke • Art</span></td>
+                <td class="hide-sm">Art</td><td><span class="tag green">Aug 22, 2026</span></td><td class="hide-sm">Submitted</td><td><span class="tag green">Graded</span></td><td style="text-align:right;"><b style="color:var(--dark)">A+</b></td></tr>
+              <tr data-cat="graded" data-name="Water Cycle Diagram Science">
+                <td><strong style="color:var(--dark)">Water Cycle Diagram</strong><span class="muted" style="display:block;">Mr. Silva • Science</span></td>
+                <td class="hide-sm">Science</td><td><span class="tag green">Aug 20, 2026</span></td><td class="hide-sm">Submitted</td><td><span class="tag green">Graded</span></td><td style="text-align:right;"><b style="color:var(--dark)">A-</b></td></tr>
+              <tr data-cat="graded" data-name="Mental Maths Sprint Maths">
+                <td><strong style="color:var(--dark)">Mental Maths Sprint</strong><span class="muted" style="display:block;">Ms. Reed • Maths</span></td>
+                <td class="hide-sm">Maths</td><td><span class="tag green">Aug 16, 2026</span></td><td class="hide-sm">Submitted</td><td><span class="tag green">Graded</span></td><td style="text-align:right;"><b style="color:var(--dark)">A</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section class="dash-view" data-view="events">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Events</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> School Events</h1>
+          <p>Upcoming activities, celebrations and important dates for families.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="School calendar downloaded for your family"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Add to Calendar</span></button>
+        </div>
+      </div>
+
+      <div class="tabs filter-row section-gap" data-target=".events-pane">
+        <button class="tab active" data-pane="upcoming"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Upcoming</button>
+        <button class="tab" data-pane="past"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Past Events</button>
+      </div>
+
+      <div class="tab-pane active" data-pane="upcoming">
+        <div class="event-grid">
+          <div class="event-card">
+            <div class="ev-banner">
+              <div class="ev-date"><span>SEP</span><b>05</b></div>
+              <span class="tag purple" style="margin-left:auto;">Academic</span>
+            </div>
+            <div class="ev-body">
+              <h3>Parent–Teacher Conference</h3>
+              <p>15-minute slots to discuss Ava's progress with Ms. Reed and the subject teachers.</p>
+              <div class="ev-meta">
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Assembly Hall</span>
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 8:30 AM</span>
+              </div>
+            </div>
+            <div class="ev-foot"><span class="muted">Your slot: 10:00 AM</span><button class="btn accent sm" data-save="You're booked for the 10:00 AM slot with Ms. Reed"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Confirmed</span></button></div>
+          </div>
+          <div class="event-card">
+            <div class="ev-banner gold">
+              <div class="ev-date"><span>SEP</span><b>12</b></div>
+              <span class="tag green" style="margin-left:auto;">Community</span>
+            </div>
+            <div class="ev-body">
+              <h3>Science Fair &amp; Demo Day</h3>
+              <p>Ava is showcasing her volcano model. Families are welcome all day — she'd love visitors!</p>
+              <div class="ev-meta">
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Science Wing</span>
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10:00 AM–2:00 PM</span>
+              </div>
+            </div>
+            <div class="ev-foot"><span class="muted">RSVPs close Sep 10</span><button class="btn ghost sm" data-save="You're on the RSVP list for the Science Fair"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>RSVP</span></button></div>
+          </div>
+          <div class="event-card">
+            <div class="ev-banner green">
+              <div class="ev-date"><span>SEP</span><b>19</b></div>
+              <span class="tag yellow" style="margin-left:auto;">Arts</span>
+            </div>
+            <div class="ev-body">
+              <h3>Book Fair</h3>
+              <p>Annual book fair with new releases and a discount on class readers. Cash and card accepted.</p>
+              <div class="ev-meta">
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Library</span>
+                <span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 9:00 AM–4:00 PM</span>
+              </div>
+            </div>
+            <div class="ev-foot"><span class="muted">All grades</span><button class="btn accent sm" data-save="You've signed up to volunteer at the Book Fair"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Join</span></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="past">
+        <div class="event-grid">
+          <div class="event-card">
+            <div class="ev-banner blue">
+              <div class="ev-date"><span>AUG</span><b>15</b></div>
+              <span class="tag green" style="margin-left:auto;">Held</span>
+            </div>
+            <div class="ev-body">
+              <h3>Independence Day Assembly</h3>
+              <p>Flag hoisting, class performances and a community picnic on the main grounds.</p>
+              <div class="ev-meta"><span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Main Grounds</span><span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 9:00 AM</span></div>
+            </div>
+            <div class="ev-foot"><span class="muted">91% attended</span><a href="#/announcements" class="card-link" data-goto="announcements">Photos in notices</a></div>
+          </div>
+          <div class="event-card">
+            <div class="ev-banner red">
+              <div class="ev-date"><span>JUL</span><b>28</b></div>
+              <span class="tag green" style="margin-left:auto;">Held</span>
+            </div>
+            <div class="ev-body">
+              <h3>Parent Orientation Day</h3>
+              <p>Welcome session for new families with a tour of campus and a faculty Q&amp;A.</p>
+              <div class="ev-meta"><span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Assembly Hall</span><span><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10:00 AM</span></div>
+            </div>
+            <div class="ev-foot"><span class="muted">38 families joined</span><span class="tag purple">Thanks for coming!</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANNOUNCEMENTS ============ -->
+    <section class="dash-view" data-view="announcements">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Announcements</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Announcements</h1>
+          <p>Official notices from school, your child's teachers and the front office.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="Announcement archive downloading"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Archive</span></button>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card-head">
+          <h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Latest Notices</h3>
+          <span class="tag purple">4 unread</span>
+        </div>
+        <div class="ann-item">
+          <div class="ann-date"><b>28</b><span>Aug</span></div>
+          <div class="ann-txt">
+            <strong>Parent–Teacher Conference slots open</strong>
+            <p>Book your 15-minute slot for Sep 05. Ava's form teacher already reserved your 10:00 AM spot.</p>
+            <small>Posted by Ms. Sarah Reed • General</small>
+          </div>
+        </div>
+        <div class="ann-item">
+          <div class="ann-date"><b>27</b><span>Aug</span></div>
+          <div class="ann-txt">
+            <strong>Science Fair permission slip due</strong>
+            <p>The printed slip went home today — please sign and return by Friday, Sep 04.</p>
+            <small>Posted by Mr. Alan Silva • Homework</small>
+          </div>
+        </div>
+        <div class="ann-item">
+          <div class="ann-date"><b>26</b><span>Aug</span></div>
+          <div class="ann-txt">
+            <strong>School closed — Sep 08 (Public Holiday)</strong>
+            <p>Classes resume Wednesday, Sep 09 at the usual time.</p>
+            <small>Posted by Head Office • Notice</small>
+          </div>
+        </div>
+        <div class="ann-item">
+          <div class="ann-date"><b>24</b><span>Aug</span></div>
+          <div class="ann-txt">
+            <strong>Book Fair volunteers needed</strong>
+            <p>We'd love 6 parent volunteers for the Sep 19 Book Fair. Sign up in the Events page.</p>
+            <small>Posted by Parent Council • General</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MESSAGES ============ -->
+    <section class="dash-view" data-view="messages">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Messages</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Messages</h1>
+          <p>Conversations with Ava's teachers — ask questions anytime.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn accent sm" data-modal="messageTeacherModal"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>New Message</span></button>
+        </div>
+      </div>
+
+      <div class="card msg-layout">
+        <div class="msg-list">
+          <div class="ms-search">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Search teachers…">
+          </div>
+          <div class="conv active" data-thread="reed" data-name="Ms Sarah Reed">
+            <div class="c-ava">SR</div>
+            <div class="c-mid"><strong>Ms. Sarah Reed</strong><span>Re: Ava's maths progress — great improvement!</span></div>
+            <div class="c-side"><time>9:10</time><b>1</b></div>
+          </div>
+          <div class="conv" data-thread="silva" data-name="Mr Alan Silva">
+            <div class="c-ava yellow" style="background:linear-gradient(135deg,var(--accent),#d99a06);color:var(--dark);">AS</div>
+            <div class="c-mid"><strong>Mr. Alan Silva</strong><span>Reading feedback attached for Ava</span></div>
+            <div class="c-side"><time>Yesterday</time></div>
+          </div>
+          <div class="conv" data-thread="diaz" data-name="Coach Pete Diaz">
+            <div class="c-ava red">PD</div>
+            <div class="c-mid"><strong>Coach Pete Diaz</strong><span>Field day consent form needs your signature</span></div>
+            <div class="c-side"><time>Mon</time><b>1</b></div>
+          </div>
+          <div class="conv" data-thread="clarke" data-name="Ms Nora Clarke">
+            <div class="c-ava green">NC</div>
+            <div class="c-mid"><strong>Ms. Nora Clarke</strong><span>Ava's portrait is my favourite this term!</span></div>
+            <div class="c-side"><time>Mon</time></div>
+          </div>
+        </div>
+
+        <div class="msg-thread active" data-thread="reed">
+          <div class="thread-head">
+            <div class="t-user"><div class="t-avatar">SR</div><div><strong>Ms. Sarah Reed</strong><span>Maths &amp; Science • Form teacher</span></div></div>
+            <button class="thread-back" aria-label="Back"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          </div>
+          <div class="thread-body">
+            <div class="bubble in">Hello Daniel! Quick update — Ava aced this week's fractions quiz with 96%. Her confidence is really building.</div>
+            <div class="bubble me">That's wonderful to hear! She's been practising at home a lot.</div>
+            <div class="bubble in">It shows! Could you keep the fractions sheets coming for the next two weeks? We'll be moving to mixed numbers after that.</div>
+            <div class="bubble me">Of course, thank you for the note. We'll attend the conference on Sep 05 as well.</div>
+            <div class="bubble in">Perfect — I've reserved your 10:00 AM slot. See you there! 😊</div>
+          </div>
+          <form class="thread-compose" data-toast="Message sent to Ms. Reed">
+            <input type="text" placeholder="Type a message…">
+            <button class="btn accent sm" type="submit"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Send</span></button>
+          </form>
+        </div>
+
+        <div class="msg-thread" data-thread="silva">
+          <div class="thread-head">
+            <div class="t-user"><div class="t-avatar gold">AS</div><div><strong>Mr. Alan Silva</strong><span>Language &amp; Social Studies</span></div></div>
+            <button class="thread-back" aria-label="Back"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          </div>
+          <div class="thread-body">
+            <div class="bubble in">Hi Daniel, attached is Ava's reading feedback. Fluent reading has improved two full levels since Term 1.</div>
+            <div class="bubble me">Amazing! She reads to her little brother every night.</div>
+            <div class="bubble in">That's exactly the habit that drives progress. If she keeps it up she'll be top of the class by Term 3.</div>
+            <div class="bubble me">Thank you for the encouragement!</div>
+          </div>
+          <form class="thread-compose" data-toast="Message sent to Mr. Silva">
+            <input type="text" placeholder="Type a message…">
+            <button class="btn accent sm" type="submit"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Send</span></button>
+          </form>
+        </div>
+
+        <div class="msg-thread" data-thread="diaz">
+          <div class="thread-head">
+            <div class="t-user"><div class="t-avatar red">PD</div><div><strong>Coach Pete Diaz</strong><span>Physical Education</span></div></div>
+            <button class="thread-back" aria-label="Back"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          </div>
+          <div class="thread-body">
+            <div class="bubble in">Hello! The Field Day consent form went home in Ava's bag — could you sign and return it by Thursday?</div>
+            <div class="bubble me">Sure thing, we'll send it back tomorrow.</div>
+            <div class="bubble in">Great. She's been excellent in PE this term, a natural team player!</div>
+          </div>
+          <form class="thread-compose" data-toast="Message sent to Coach Diaz">
+            <input type="text" placeholder="Type a message…">
+            <button class="btn accent sm" type="submit"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Send</span></button>
+          </form>
+        </div>
+
+        <div class="msg-thread" data-thread="clarke">
+          <div class="thread-head">
+            <div class="t-user"><div class="t-avatar green">NC</div><div><strong>Ms. Nora Clarke</strong><span>Art &amp; Creativity</span></div></div>
+            <button class="thread-back" aria-label="Back"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          </div>
+          <div class="thread-body">
+            <div class="bubble in">Just wanted to say Ava's abstract portrait is my favourite piece this term — such bold colour choices!</div>
+            <div class="bubble me">She's so proud of it, it's hanging in our kitchen.</div>
+            <div class="bubble in">Make sure she brings it for the display on Sep 19. It deserves a spot!</div>
+          </div>
+          <form class="thread-compose" data-toast="Message sent to Ms. Clarke">
+            <input type="text" placeholder="Type a message…">
+            <button class="btn accent sm" type="submit"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Send</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROFILE ============ -->
+    <section class="dash-view" data-view="profile">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Profile</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> My Profile</h1>
+          <p>Your family details and the children linked to your account.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn ghost sm" data-save="Profile saved successfully"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span>Save</span></button>
+        </div>
+      </div>
+
+      <div class="card profile-head section-gap">
+        <div class="profile-ava">DR</div>
+        <div class="profile-info">
+          <h2>Daniel Reed</h2>
+          <p>Parent &amp; guardian • Robinson family</p>
+          <div class="meta-tags">
+            <span class="tag purple">Connected since 2022</span>
+            <span class="tag green">1 child at school</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div class="p-stat"><div class="val">1</div><span>Child</span></div>
+          <div class="p-stat"><div class="val">3</div><span>Messages wk</span></div>
+          <div class="p-stat"><div class="val">97%</div><span>Involvement</span></div>
+        </div>
+      </div>
+
+      <div class="dash-grid g2 section-gap">
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About Me</h3></div>
+          <form class="dform dform-grid" data-toast="Profile details updated">
+            <div class="dfield"><label>Full Name</label><input type="text" value="Daniel Reed"></div>
+            <div class="dfield"><label>Relationship</label><input type="text" value="Father"></div>
+            <div class="dfield"><label>Email</label><input type="email" value="d.reed@example.com"></div>
+            <div class="dfield"><label>Phone</label><input type="tel" value="+1 (555) 010-3382"></div>
+            <div class="dfield full"><label>Address</label><input type="text" value="12 Maple Street, Springfield"></div>
+            <div class="dfield full"><button class="btn accent" type="submit">Save Changes</button></div>
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Linked Children</h3></div>
+          <ul class="mini-list">
+            <li>
+              <div class="t-avatar" style="width:44px;height:44px;">AR</div>
+              <div class="m-txt"><strong>Ava Robinson</strong><span>Class 4-B • Student ID A-1024</span></div>
+              <div class="m-meta"><button class="btn xs accent" data-goto="academics">View</button></div>
+            </li>
+          </ul>
+          <p class="muted" style="padding:0 24px 16px;font-size:.82rem;">Add more children at the school office or contact support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SETTINGS ============ -->
+    <section class="dash-view" data-view="settings">
+      <div class="page-head">
+        <div>
+          <div class="crumb"><a href="#/overview" data-goto="overview">Home</a> / <span>Settings</span></div>
+          <h1><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</h1>
+          <p>Manage notifications, security and family privacy.</p>
+        </div>
+      </div>
+
+      <div class="tabs filter-row section-gap" data-target=".set-pane">
+        <button class="tab active" data-pane="prefs"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Preferences</button>
+        <button class="tab" data-pane="notifs"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Notifications</button>
+        <button class="tab" data-pane="security"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Security</button>
+      </div>
+
+      <div class="tab-pane active" data-pane="prefs">
+        <div class="card section-gap">
+          <div class="card-head"><h3>Family Preferences</h3></div>
+          <div class="set-row"><div class="s-txt"><strong>Default child view</strong><span>Always land on <i>Ava Robinson</i> when you sign in</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+          <div class="set-row"><div class="s-txt"><strong>Weekly email digest</strong><span>Receive a Monday summary of grades, events and notices</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+          <div class="set-row"><div class="s-txt"><strong>Show grade letter grades</strong><span>Display A/B/C instead of percentages in tables</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="notifs">
+        <div class="card section-gap">
+          <div class="card-head"><h3>Notifications</h3></div>
+          <div class="set-row"><div class="s-txt"><strong>New announcements</strong><span>Alert me when the school publishes a notice</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+          <div class="set-row"><div class="s-txt"><strong>Assignment due reminders</strong><span>Remind us 2 days before homework is due</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+          <div class="set-row"><div class="s-txt"><strong>Attendance updates</strong><span>Notify me if a day is marked absent or late</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+          <div class="set-row"><div class="s-txt"><strong>Teacher messages</strong><span>Instant notification when a teacher writes</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="security">
+        <div class="dash-grid g2 section-gap">
+          <div class="card">
+            <div class="card-head"><h3>Change Password</h3></div>
+            <form class="dform dform-grid" data-toast="Password updated">
+              <div class="dfield full"><label>Current Password</label><input type="password" placeholder="••••••••"></div>
+              <div class="dfield full"><label>New Password</label><input type="password" placeholder="At least 8 characters"></div>
+              <div class="dfield full"><label>Confirm New Password</label><input type="password" placeholder="Repeat your new password"></div>
+              <div class="dfield full"><button class="btn accent" type="submit">Update Password</button></div>
+            </form>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Privacy &amp; Account</h3></div>
+            <div class="set-row"><div class="s-txt"><strong>Download my data</strong><span>Export all family records and messages</span></div><button class="btn ghost sm" data-save="Your family data export has been emailed to you">Export</button></div>
+            <div class="set-row"><div class="s-txt"><strong>Change linked child</strong><span>Request a different guardian arrangement</span></div><button class="btn ghost sm" data-toast="Request sent to the school office">Request</button></div>
+            <div class="set-row"><div class="s-txt"><strong>Unlink child</strong><span>Requires confirmation from the school office</span></div><button class="btn ghost sm" data-toast="Please contact the school office to unlink a child">Unlink</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="dash-modal" id="messageTeacherModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-x" aria-label="Close"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <div class="modal-title">Message a Teacher</div>
+      <div class="modal-sub">Your message is delivered to the teacher's inbox instantly.</div>
+      <form class="dform dform-grid" data-toast="Your message has been sent">
+        <div class="dfield full"><label>Send To</label><select><option>Ms. Sarah Reed — Form teacher</option><option>Mr. Alan Silva — Language</option><option>Ms. Nora Clarke — Art</option><option>Coach Pete Diaz — PE</option></select></div>
+        <div class="dfield full"><label>Subject</label><input type="text" placeholder="e.g. Question about homework" required></div>
+        <div class="dfield full"><label>Message</label><textarea rows="4" placeholder="Write your message here…"></textarea></div>
+        <div class="modal-foot full"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn accent" type="submit">Send Message</button></div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="dash-foot">
+    <span>© 2026 Stackly Portal. Family workspace.</span>
+    <a href="index.html">Back to website</a>
+  </footer>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

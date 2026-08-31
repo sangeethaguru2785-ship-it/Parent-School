@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 – Page Not Found | Parent–School Communication Portal</title>
+  <meta name="description" content="The page you are looking for could not be found. Head back to the Parent–School Communication Portal home page.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Kumbh+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/cropped-favicon-32x32.webp">
+</head>
+<body data-page="404">
+
+  <!-- 1. 404 -->
+  <section class="error-page">
+    <svg class="shape s1" viewBox="0 0 100 100" fill="#FFB606"><circle cx="50" cy="50" r="50"/></svg>
+    <svg class="shape s2" viewBox="0 0 100 100" fill="#525FE1"><path d="M50 0 100 100 0 100z"/></svg>
+    <div class="container">
+      <div class="error-box reveal">
+        <span class="error-code">404</span>
+        <h1 class="error-title">Page Not Found</h1>
+        <p>Oops! Looks like this page went on break or moved to a new classroom. Don't worry — your school dashboard is just one click away.</p>
+        <div class="error-cta">
+          <a href="index.html" class="btn accent"><span>Back to Home</span></a>
+          <a href="#" class="btn outline" id="backBtn"><span>Go Back</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var back = document.getElementById('backBtn');
+      if (back) {
+        back.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (window.history.length > 1) { window.history.back(); }
+          else { window.location.href = 'index.html'; }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

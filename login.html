@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – Parent–School Communication Portal</title>
+  <meta name="description" content="Login to the Parent–School Communication Portal to track attendance, grades, assignments, events and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Kumbh+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/cropped-favicon-32x32.webp">
+</head>
+<body class="auth-body" data-page="login">
+
+  <main class="auth-page">
+    <div class="auth-wrap">
+
+      <!-- ===== Side panel ===== -->
+      <aside class="auth-aside">
+        <a class="auth-brand" href="index.html" aria-label="Stackly – back to home"><img src="img/logo.webp" alt="Stackly"></a>
+        <div class="auth-aside-inner">
+          <span class="auth-eyebrow">Parent–School Communication Portal</span>
+          <h2>Welcome back to your child's learning journey</h2>
+          <p class="auth-lead">Stay connected with real-time updates on attendance, grades and school events — all in one secure place.</p>
+          <ul class="auth-benefits">
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></i><span><b>Real-time updates</b><small>Attendance &amp; grades, live</small></span></li>
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i><span><b>Message teachers</b><small>Direct, instant conversations</small></span></li>
+            <li><i><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></i><span><b>Secure by design</b><small>Encrypted &amp; private</small></span></li>
+          </ul>
+          <p class="auth-tagline">"Strong parent–teacher partnership is the foundation of student success."</p>
+        </div>
+      </aside>
+
+      <!-- ===== Form ===== -->
+      <div class="auth-form">
+        <a class="auth-form-brand auth-form-brand-large" href="index.html" aria-label="Stackly – back to home"><img src="img/logo.webp" alt="Stackly"></a>
+        <h1>Sign in to your account</h1>
+        <p>Enter your details below to access your portal.</p>
+
+        <div class="form-error" id="loginFormError" role="alert">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Please fix the highlighted fields before continuing.</span>
+        </div>
+
+        <form id="loginForm" novalidate>
+
+          <div class="form-field role-field">
+            <span class="role-label">I am signing in as</span>
+            <div class="role-grid" role="radiogroup" aria-label="Account role">
+              <label class="role-card" for="loginRoleParent">
+                <input type="radio" name="role" id="loginRoleParent" value="parent">
+                <span class="role-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="role-ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <b>Parent</b>
+                <small>Track your child's learning</small>
+              </label>
+              <label class="role-card" for="loginRoleTeacher">
+                <input type="radio" name="role" id="loginRoleTeacher" value="teacher">
+                <span class="role-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <span class="role-ic"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+                <b>Teacher</b>
+                <small>Manage your classroom</small>
+              </label>
+            </div>
+            <div class="field-error" data-error-for="role">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Please select a role to continue.</span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="form-field" data-field="password">
+            <label for="password">Password</label>
+            <div class="pass-wrap">
+              <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password">
+              <button type="button" class="pass-toggle" aria-label="Show password">
+                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
+          <div class="login-extra">
+            <label><input type="checkbox" name="remember"> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn accent"><span>Sign In</span><span class="btn-spinner"></span></button>
+        </form>
+
+        <div class="login-success" style="display:none;">
+          <div class="tick">
+            <svg class="icon" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Login successful!</h3>
+          <p>Welcome back! Redirecting to your dashboard…</p>
+        </div>
+
+        <div class="login-or">or continue with</div>
+        <div class="social-login">
+          <a href="#" aria-label="Google">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v5.2h5.28c-.66 3.44-3.86 4.8-6.82 4.8-4.15 0-7.5-3.36-7.5-7.5s3.35-7.5 7.5-7.5c1.85 0 3.5.67 4.78 1.76l3.6-3.6C16.77 2.04 14.4 1 11.96 1 5.92 1 1 5.92 1 12s4.92 11 10.96 11c6.02 0 10.99-4.47 10.99-11 0-.63-.06-1.25-.16-1.85z"/></svg>
+          </a>
+          <a href="#" aria-label="Microsoft">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h9.5v9.5H2V2zm10.5 0H22v9.5h-9.5V2zM2 12.5h9.5V22H2v-9.5zm10.5 0H22V22h-9.5v-9.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Apple">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          </a>
+        </div>
+
+        <p class="auth-switch">Don't have an account? <a href="signup.html">Create one</a></p>
+
+        <a class="auth-home" href="index.html" aria-label="Go to Home page"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg> Go to Home</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      /* ---------- Show / hide password ---------- */
+      document.querySelectorAll('.pass-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var input = btn.closest('.pass-wrap').querySelector('input');
+          var show = input.type === 'password';
+          input.type = show ? 'text' : 'password';
+          btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        });
+      });
+
+      /* ---------- Role selection cards ---------- */
+      var roleCards = document.querySelectorAll('.role-card');
+      roleCards.forEach(function (card) {
+        var radio = card.querySelector('input[type="radio"]');
+        card.addEventListener('click', function () {
+          radio.checked = true;
+          refreshRoles();
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            radio.checked = true;
+            refreshRoles();
+          }
+        });
+      });
+      function refreshRoles() {
+        roleCards.forEach(function (c) {
+          c.classList.toggle('selected', c.querySelector('input').checked);
+        });
+      }
+
+      /* ---------- Field validation helper ---------- */
+      var form = document.getElementById('loginForm');
+      var formError = document.getElementById('loginFormError');
+
+      function setInvalid(field, msg) {
+        field.classList.add('invalid');
+        if (msg) {
+          var m = field.querySelector('[data-msg]');
+          if (m) m.textContent = msg;
+        }
+      }
+      function setValid(field) {
+        field.classList.remove('invalid');
+      }
+
+      var emailField = document.querySelector('[data-field="email"]');
+      var passField = document.querySelector('[data-field="password"]');
+      var roleField = document.querySelector('.role-field');
+
+      function validateEmail(value) {
+        value = value.trim();
+        if (!value || !/^[a-zA-Z0-9@.]+$/.test(value)) return false;
+        var at = value.indexOf('@');
+        if (at < 1 || at === value.length - 1) return false;
+        if (value.indexOf('@', at + 1) !== -1) return false;
+        if (value.indexOf('.', at + 1) < 0) return false;
+        return value.slice(value.lastIndexOf('.') + 1).length >= 2;
+      }
+
+      function passwordIssue(value) {
+        if (!value) return 'Password is required.';
+        if (value.length < 8) return 'Password must be at least 8 characters.';
+        var missing = [];
+        if (!/[A-Z]/.test(value)) missing.push('one uppercase letter');
+        if (!/[a-z]/.test(value)) missing.push('one lowercase letter');
+        if (!/\d/.test(value)) missing.push('one number');
+        if (!/[^A-Za-z0-9]/.test(value)) missing.push('one special character (like @, #, $, !)');
+        if (missing.length) return 'Password must include ' + missing.join(', ') + '.';
+        return null;
+      }
+
+      function clearErrors() {
+        formError.classList.remove('show');
+        document.querySelectorAll('.form-field.invalid').forEach(setValid);
+        document.querySelector('.auth-page').classList.remove('shake');
+      }
+
+      function validate() {
+        var firstInvalid = null;
+        var email = emailField.querySelector('input');
+        var pass = passField.querySelector('input');
+        var roleChecked = roleField.querySelector('input[type="radio"]:checked');
+
+        if (!roleChecked) {
+          setInvalid(roleField);
+          firstInvalid = firstInvalid || roleField;
+        } else {
+          setValid(roleField);
+        }
+
+        if (!email.value.trim()) {
+          setInvalid(emailField, 'Email address is required.');
+          firstInvalid = firstInvalid || emailField;
+        } else if (!validateEmail(email.value)) {
+          setInvalid(emailField, 'Please enter a valid email address. Only letters, numbers, "@" and "." are allowed.');
+          firstInvalid = firstInvalid || emailField;
+        } else {
+          setValid(emailField);
+        }
+
+        if (passwordIssue(pass.value)) {
+          setInvalid(passField, passwordIssue(pass.value));
+          firstInvalid = firstInvalid || passField;
+        } else {
+          setValid(passField);
+        }
+
+        return { valid: !firstInvalid, first: firstInvalid };
+      }
+
+      /* live validation on input (typing & pasting) */
+      emailField.querySelector('input').addEventListener('input', function () {
+        if (!this.value.trim()) {
+          setValid(emailField);
+        } else if (!validateEmail(this.value)) {
+          setInvalid(emailField, 'Only letters, numbers, "@" and "." are allowed in an email address.');
+        } else {
+          setValid(emailField);
+        }
+        formError.classList.remove('show');
+      });
+      passField.querySelector('input').addEventListener('input', function () {
+        var issue = passwordIssue(this.value);
+        if (issue) setInvalid(passField, issue); else setValid(passField);
+        formError.classList.remove('show');
+      });
+      roleField.querySelectorAll('input').forEach(function (r) {
+        r.addEventListener('change', function () { setValid(roleField); formError.classList.remove('show'); });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+        var res = validate();
+        if (!res.valid) {
+          formError.classList.add('show');
+          document.querySelector('.auth-page').classList.add('shake');
+          setTimeout(function () { document.querySelector('.auth-page').classList.remove('shake'); }, 550);
+          res.first.querySelector('input, .role-card') && (res.first.querySelector('input, .role-card').focus ? res.first.querySelector('input, .role-card').focus() : null);
+          return;
+        }
+        /* success */
+        var btn = form.querySelector('button[type="submit"]');
+        btn.classList.add('is-loading');
+        setTimeout(function () {
+          var role = roleField.querySelector('input:checked').value;
+          var email = emailField.querySelector('input').value.trim();
+          var session = {
+            role: role,
+            email: email,
+            loggedInAt: new Date().toISOString()
+          };
+          try { localStorage.setItem('portal_user', JSON.stringify(session)); } catch (err) {}
+          form.style.display = 'none';
+          var success = document.querySelector('.login-success');
+          if (success) success.style.display = 'block';
+          var target = role === 'teacher' ? 'teacher-dashboard.html' : 'parent-dashboard.html';
+          setTimeout(function () { window.location.href = target; }, 1400);
+        }, 700);
+      });
+    })();
+  </script>
+</body>
+</html>
