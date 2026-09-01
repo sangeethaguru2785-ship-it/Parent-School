@@ -1249,7 +1249,7 @@ section { position: relative; }
 .program-card:hover .price { background: var(--purple); color: var(--white); transform: rotate(6deg); }
 .program-card .icon-tag {
   position: absolute;
-  bottom: -26px; left: 24px;
+  bottom: 18px; left: 24px;
   width: 58px; height: 58px;
   border-radius: 16px;
   background: var(--white);
@@ -1260,6 +1260,7 @@ section { position: relative; }
   z-index: 2;
   transition: all var(--transition);
 }
+.program-card .icon-tag .icon { width: 26px; height: 26px; display: block; }
 .program-card:hover .icon-tag { background: var(--accent); color: var(--dark); transform: rotate(-8deg); }
 .program-card .txt { padding: 40px 26px 28px; }
 .program-card h4 { margin-bottom: 10px; transition: color var(--transition); }
@@ -1774,6 +1775,10 @@ section { position: relative; }
 .page-banner .shape { position: absolute; z-index: 1; opacity: .4; }
 .page-banner .shape.s1 { top: 24%; right: 10%; width: 70px; animation: floaty 6s ease-in-out infinite; }
 .page-banner .shape.s2 { bottom: 22%; left: 12%; width: 40px; animation: floaty 7s ease-in-out infinite reverse; }
+.page-banner .breadcrumbs { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) both; }
+.page-banner h1 { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .12s both; }
+.page-banner p { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .24s both; }
+.page-banner .btn { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .36s both; }
 
 /* ---------- 404 page ---------- */
 .error-page {
@@ -1828,6 +1833,11 @@ section { position: relative; }
 .error-page .btn.outline { color: var(--white); border-color: rgba(255, 255, 255, .65); }
 .error-page .btn.outline:hover { color: var(--dark); border-color: var(--accent); }
 .error-page .btn.outline::before { background: var(--accent); }
+.error-box .error-code { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) both, floaty 5s ease-in-out .5s infinite; }
+.error-box .error-title { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .14s both; }
+.error-box > p { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .28s both; }
+.error-box > p.error-hint { margin-top: 12px; color: rgba(255,255,255,.65); font-size: .98rem; }
+.error-cta { animation: fadeUp .85s cubic-bezier(.22,1,.36,1) .42s both; }
 
 /* ---------- About page ---------- */
 .about-page { padding: 110px 0; background: var(--white); }
@@ -2543,7 +2553,9 @@ body[data-page="features"] .site-footer .container {
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto !important; }
-  .reveal, .hero-tag, .hero h1, .hero p, .hero-cta, .hero-meta {
+  .reveal, .hero-tag, .hero h1, .hero p, .hero-cta, .hero-meta,
+  .page-banner .breadcrumbs, .page-banner h1, .page-banner p, .page-banner .btn,
+  .error-box .error-code, .error-box .error-title, .error-box > p, .error-cta {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
