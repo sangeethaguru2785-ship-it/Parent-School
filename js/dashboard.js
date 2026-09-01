@@ -28,6 +28,75 @@
     });
   });
 
+  /* ---------- Apply logged-in user name & details (no static defaults) ---------- */
+  (function applyUserInfo() {
+    var session = null;
+    try { session = JSON.parse(localStorage.getItem('portal_user') || 'null'); } catch (err) {}
+    if (!session) return;
+
+    var fullName = session.name || '';
+    var email = session.email || '';
+    var phone = session.phone || '';
+    var role = session.role || '';
+    var firstName = fullName.split(/\s+/)[0] || fullName;
+
+    function initials(name) {
+      return name.split(/\s+/).filter(Boolean).slice(0, 2)
+        .map(function (w) { return w.charAt(0).toUpperCase(); }).join('') || 'U';
+    }
+
+    function fill(sel, value, safeText) {
+      if (value === '' && safeText === undefined) return;
+      document.querySelectorAll(sel).forEach(function (el) {
+        var tag = el.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+          el.value = value;
+        } else {
+          el.textContent = value;
+        }
+      });
+    }
+
+    fill('[data-user-name]', fullName, '');
+    fill('[data-user-greeting]', firstName, '');
+    fill('[data-user-initials]', initials(fullName), '');
+    fill('[data-user-email]', email, '');
+    fill('[data-user-phone]', phone, '');
+
+    document.querySelectorAll('[data-user-role-label]').forEach(function (el) {
+      var label = role === 'teacher' ? 'Teacher' : 'Parent';
+      el.textContent = (el.getAttribute('data-user-role-label') || '').replace('{role}', label);
+    });
+
+    document.querySelectorAll('[data-user-welcome]').forEach(function (el) {
+      var t = el.getAttribute('data-user-welcome') || '';
+      el.textContent = t.replace('{name}', fullName);
+    });
+  })();
+
+  /* ---------- Non-nav interactions → 404 ---------- */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || t.nodeType !== 1) return;
+
+    /* Keep header & sidebar fully working (navigation only) */
+    if (t.closest('.dash-topbar')) return;
+    if (t.closest('.dash-side, #dashSide, .side-backdrop')) return;
+
+    /* Everything else clickable → 404 (works on desktop & mobile) */
+    var interactive = t.closest(
+      'button, a, input[type="checkbox"], [data-goto], [data-modal], [data-save], ' +
+      '[data-toast], [data-view-student], .kpi-card, .card, .event-card, .conv, ' +
+      '.chip, .tab, .activity, .icon-btn, .t-user, .ann-item, .tl-item, ' +
+      '.attendance-day, .m-item, .set-row, .profile-head'
+    );
+    if (!interactive) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = '404.html';
+  }, true);
+
   /* ---------- View routing ---------- */
   var defaultView = (document.body.getAttribute('data-default') || 'overview');
   var viewEls = Array.prototype.slice.call(document.querySelectorAll('.dash-view'));

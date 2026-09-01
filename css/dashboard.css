@@ -816,6 +816,15 @@
   font-size: .92rem;
   transition: all var(--transition);
 }
+.dfield .avatar-input .t-avatar {
+  width: 52px;
+  height: 52px;
+  font-size: 1rem;
+}
+.dfield.invalid input, .dfield.invalid textarea, .dfield.invalid select {
+  border-color: var(--red);
+  background: #fff6f4;
+}
 .dfield input:focus, .dfield select:focus, .dfield textarea:focus {
   border-color: var(--link);
   background: var(--white);

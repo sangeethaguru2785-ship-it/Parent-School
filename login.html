@@ -69,6 +69,15 @@
             </div>
           </div>
 
+          <div class="form-field" data-field="name">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name">
+            <div class="field-error">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
+          </div>
+
           <div class="form-field" data-field="email">
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
@@ -92,9 +101,13 @@
             </div>
           </div>
 
-          <div class="login-extra">
+          <div class="login-extra" data-field="remember">
             <label><input type="checkbox" name="remember"> Remember me</label>
-            <a href="#">Forgot password?</a>
+            <a href="404.html">Forgot password?</a>
+            <div class="field-error" id="rememberError" style="width:100%;">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-msg></span>
+            </div>
           </div>
 
           <button type="submit" class="btn accent"><span>Sign In</span><span class="btn-spinner"></span></button>
@@ -110,13 +123,13 @@
 
         <div class="login-or">or continue with</div>
         <div class="social-login">
-          <a href="#" aria-label="Google">
+          <a href="404.html" aria-label="Google">
             <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v5.2h5.28c-.66 3.44-3.86 4.8-6.82 4.8-4.15 0-7.5-3.36-7.5-7.5s3.35-7.5 7.5-7.5c1.85 0 3.5.67 4.78 1.76l3.6-3.6C16.77 2.04 14.4 1 11.96 1 5.92 1 1 5.92 1 12s4.92 11 10.96 11c6.02 0 10.99-4.47 10.99-11 0-.63-.06-1.25-.16-1.85z"/></svg>
           </a>
-          <a href="#" aria-label="Microsoft">
+          <a href="404.html" aria-label="Microsoft">
             <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h9.5v9.5H2V2zm10.5 0H22v9.5h-9.5V2zM2 12.5h9.5V22H2v-9.5zm10.5 0H22V22h-9.5v-9.5z"/></svg>
           </a>
-          <a href="#" aria-label="Apple">
+          <a href="404.html" aria-label="Apple">
             <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
           </a>
         </div>
@@ -129,7 +142,10 @@
     </div>
   </main>
 
+  <script src="js/vendor/motion-one.js"></script>
+  <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
   <script>
     (function () {
       /* ---------- Show / hide password ---------- */
@@ -179,9 +195,23 @@
         field.classList.remove('invalid');
       }
 
+      var nameField = document.querySelector('[data-field="name"]');
       var emailField = document.querySelector('[data-field="email"]');
       var passField = document.querySelector('[data-field="password"]');
       var roleField = document.querySelector('.role-field');
+      var rememberField = document.querySelector('[data-field="remember"]');
+      var rememberError = document.getElementById('rememberError');
+
+      function setRememberInvalid(msg) {
+        var box = rememberField.querySelector('input[type="checkbox"]');
+        box.classList.add('invalid');
+        if (msg) { var m = rememberError.querySelector('[data-msg]'); if (m) m.textContent = msg; }
+        rememberError.style.display = 'flex';
+      }
+      function setRememberValid() {
+        rememberField.querySelector('input[type="checkbox"]').classList.remove('invalid');
+        rememberError.style.display = 'none';
+      }
 
       function validateEmail(value) {
         value = value.trim();
@@ -208,11 +238,13 @@
       function clearErrors() {
         formError.classList.remove('show');
         document.querySelectorAll('.form-field.invalid').forEach(setValid);
+        setRememberValid();
         document.querySelector('.auth-page').classList.remove('shake');
       }
 
       function validate() {
         var firstInvalid = null;
+        var name = nameField.querySelector('input');
         var email = emailField.querySelector('input');
         var pass = passField.querySelector('input');
         var roleChecked = roleField.querySelector('input[type="radio"]:checked');
@@ -222,6 +254,16 @@
           firstInvalid = firstInvalid || roleField;
         } else {
           setValid(roleField);
+        }
+
+        if (!name.value.trim()) {
+          setInvalid(nameField, 'Full name is required.');
+          firstInvalid = firstInvalid || nameField;
+        } else if (name.value.trim().length < 2) {
+          setInvalid(nameField, 'Please enter your full name.');
+          firstInvalid = firstInvalid || nameField;
+        } else {
+          setValid(nameField);
         }
 
         if (!email.value.trim()) {
@@ -241,10 +283,22 @@
           setValid(passField);
         }
 
+        if (rememberField && !rememberField.querySelector('input').checked) {
+          setRememberInvalid('Please check the "Remember me" box to continue.');
+          firstInvalid = firstInvalid || rememberField;
+        } else if (rememberField) {
+          setRememberValid();
+        }
+
         return { valid: !firstInvalid, first: firstInvalid };
       }
 
       /* live validation on input (typing & pasting) */
+      nameField.querySelector('input').addEventListener('input', function () {
+        if (this.value.trim().length < 2) setInvalid(nameField, 'Please enter your full name.');
+        else setValid(nameField);
+        formError.classList.remove('show');
+      });
       emailField.querySelector('input').addEventListener('input', function () {
         if (!this.value.trim()) {
           setValid(emailField);
@@ -263,6 +317,11 @@
       roleField.querySelectorAll('input').forEach(function (r) {
         r.addEventListener('change', function () { setValid(roleField); formError.classList.remove('show'); });
       });
+      if (rememberField) {
+        rememberField.querySelector('input[type="checkbox"]').addEventListener('change', function () {
+          if (this.checked) { setRememberValid(); formError.classList.remove('show'); }
+        });
+      }
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -281,16 +340,30 @@
         setTimeout(function () {
           var role = roleField.querySelector('input:checked').value;
           var email = emailField.querySelector('input').value.trim();
+          var name = nameField.querySelector('input').value.trim();
+          var emailKey = email.toLowerCase();
+
+          var stored = null;
+          try {
+            var users = JSON.parse(localStorage.getItem('portal_users') || '{}');
+            stored = users[emailKey] || null;
+          } catch (err) {}
+
+          var effectiveRole = stored && stored.role ? stored.role : role;
+          var effectiveName = stored && stored.name ? stored.name : name;
+
           var session = {
-            role: role,
+            role: effectiveRole,
             email: email,
+            name: effectiveName,
+            phone: (stored && stored.phone) || '',
             loggedInAt: new Date().toISOString()
           };
           try { localStorage.setItem('portal_user', JSON.stringify(session)); } catch (err) {}
           form.style.display = 'none';
           var success = document.querySelector('.login-success');
           if (success) success.style.display = 'block';
-          var target = role === 'teacher' ? 'teacher-dashboard.html' : 'parent-dashboard.html';
+          var target = effectiveRole === 'teacher' ? 'teacher-dashboard.html' : 'parent-dashboard.html';
           setTimeout(function () { window.location.href = target; }, 1400);
         }, 700);
       });

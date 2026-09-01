@@ -21,23 +21,34 @@
   if (heroVideos.length === 2) {
     const [v1, v2] = heroVideos;
     let current = v1;
-    v1.classList.add('is-active');
-    v2.classList.add('is-hidden');
+
     v2.pause();
     v2.currentTime = 0;
+
+    const fadeIn = (video) => {
+      video.classList.add('is-active');
+    };
 
     const switchTo = (next) => {
       if (current === next) return;
       next.currentTime = 0;
-      const playPromise = next.play();
-      if (playPromise && playPromise.then) playPromise.catch(() => {});
-      next.classList.add('is-active');
-      next.classList.remove('is-hidden');
-      current.classList.add('is-hidden');
-      current.classList.remove('is-active');
-      current.pause();
-      current = next;
+      const onPlaying = () => {
+        next.removeEventListener('playing', onPlaying);
+        fadeIn(next);
+        current.classList.remove('is-active');
+        current.pause();
+        current = next;
+      };
+      next.addEventListener('playing', onPlaying);
+      next.play().catch(() => {});
     };
+
+    const showV1 = () => {
+      v1.removeEventListener('playing', showV1);
+      fadeIn(v1);
+    };
+    v1.addEventListener('playing', showV1);
+    if (!v1.paused) showV1();
 
     v1.addEventListener('ended', () => switchTo(v2));
     v2.addEventListener('ended', () => switchTo(v1));
